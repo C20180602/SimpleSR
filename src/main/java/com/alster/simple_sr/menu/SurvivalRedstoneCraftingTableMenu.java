@@ -152,6 +152,14 @@ public class SurvivalRedstoneCraftingTableMenu extends AbstractContainerMenu {
         return count;
     }
 
+    public boolean canPlaceInInputSlot(int slot, ItemStack stack) {
+        return blockEntity.canPlaceInInputSlot(slot, stack);
+    }
+
+    public int getInputSlotStackLimit(int slot, ItemStack stack) {
+        return blockEntity.getInputSlotStackLimit(slot, stack);
+    }
+
     public boolean hasCompleteInputs() {
         SurvivalRedstoneRecipe recipe = getSelectedRecipe();
         if (recipe == null) {
@@ -204,7 +212,7 @@ public class SurvivalRedstoneCraftingTableMenu extends AbstractContainerMenu {
             }
             slot.onQuickCraft(original, copy);
         } else if (index >= PLAYER_INVENTORY_START) {
-            if (!moveItemStackTo(original, 0, INPUT_SLOT_COUNT, false)) {
+            if (!moveItemStackToMachineInputs(original)) {
                 return empty;
             }
         } else if (!moveItemStackTo(original, PLAYER_INVENTORY_START, slots.size(), false)) {
@@ -224,6 +232,26 @@ public class SurvivalRedstoneCraftingTableMenu extends AbstractContainerMenu {
         slot.onTake(player, original);
         updateOutput();
         return copy;
+    }
+
+    private boolean moveItemStackToMachineInputs(ItemStack stack) {
+        if (stack.isEmpty()) {
+            return false;
+        }
+
+        int originalCount = stack.getCount();
+        ItemStack remainder = stack.copy();
+        ItemStackHandler handler = blockEntity.getItemHandler();
+        for (int i = 0; i < INPUT_SLOT_COUNT && !remainder.isEmpty(); i++) {
+            int before = remainder.getCount();
+            remainder = handler.insertItem(i, remainder, false);
+            if (remainder.getCount() != before) {
+                slots.get(i).setChanged();
+            }
+        }
+
+        stack.setCount(remainder.getCount());
+        return stack.getCount() != originalCount;
     }
 
     @Override

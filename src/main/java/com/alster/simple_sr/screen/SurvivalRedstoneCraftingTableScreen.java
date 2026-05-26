@@ -1,10 +1,8 @@
 package com.alster.simple_sr.screen;
 
-import com.alster.simple_sr.Config;
 import com.alster.simple_sr.menu.SurvivalRedstoneCraftingTableMenu;
 import com.alster.simple_sr.recipe.SurvivalRedstoneRecipe;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
@@ -15,11 +13,19 @@ import net.minecraft.world.inventory.Slot;
 import java.util.List;
 
 public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen<SurvivalRedstoneCraftingTableMenu> {
-    private static final int PANEL = 0xFF2D3136;
-    private static final int SLOT = 0xFF8B8B8B;
-    private static final int SLOT_DARK = 0xFF373B40;
-    private static final int SELECTED = 0xFFC43A34;
-    private static final int LOCKED = 0xAA1F1F1F;
+    private static final int BACKGROUND = 0xFFC6C6C6;
+    private static final int PANEL_DARK = 0xFF8B8B8B;
+    private static final int PANEL_LIGHT = 0xFFFFFFFF;
+    private static final int SLOT_DARK = 0xFF373737;
+    private static final int SLOT_LIGHT = 0xFFFFFFFF;
+    private static final int SLOT_FILL = 0xFF8B8B8B;
+    private static final int SELECTED = 0xFFE0E0E0;
+    private static final int BUTTON_FILL = 0xFFC6C6C6;
+    private static final int LOCKED = 0xFF9F9F9F;
+    private static final int RED_TEXT = 0xFFFF5555;
+    private static final int WHITE_TEXT = 0xFFFFFFFF;
+    private static final int TEXT_SHADOW = 0xFF3F3F3F;
+    private static final float MIN_COUNT_SCALE = 0.55F;
 
     public SurvivalRedstoneCraftingTableScreen(SurvivalRedstoneCraftingTableMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -35,16 +41,16 @@ public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen
     protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
         int x = leftPos;
         int y = topPos;
-        graphics.fill(x, y, x + imageWidth, y + imageHeight, 0xFF16191D);
-        graphics.fill(x + 6, y + 14, x + 82, y + 126, PANEL);
-        graphics.fill(x + 88, y + 14, x + 254, y + 126, PANEL);
-        graphics.fill(x + 268, y + 50, x + 318, y + 104, PANEL);
+        drawRaisedPanel(graphics, x, y, imageWidth, imageHeight);
+        drawSunkenPanel(graphics, x + 6, y + 14, 76, 112);
+        drawSunkenPanel(graphics, x + 88, y + 14, 166, 112);
+        drawSunkenPanel(graphics, x + 279, y + 61, 22, 22);
 
         drawRecipeButtons(graphics, x, y);
         drawSlots(graphics, x + 90, y + 18, 9, 6);
         drawSlots(graphics, x + 90, y + 140, 9, 3);
         drawSlots(graphics, x + 90, y + 198, 9, 1);
-        drawSlots(graphics, x + 272, y + 54, 2, 2);
+        drawSlots(graphics, x + 281, y + 63, 1, 1);
     }
 
     @Override
@@ -52,6 +58,7 @@ public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen
         renderBackground(graphics);
         super.render(graphics, mouseX, mouseY, partialTick);
         renderGhostIngredients(graphics);
+        renderScaledStackCounts(graphics);
         renderRecipeCounts(graphics);
         renderTooltip(graphics, mouseX, mouseY);
     }
@@ -63,8 +70,8 @@ public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen
             int buttonY = y + 18 + i * 18;
             boolean selected = i == menu.getSelectedRecipeIndex();
             boolean locked = recipes.get(i).level() > menu.getPlayerSurvivalRedstoneLevel();
-            graphics.fill(buttonX, buttonY, buttonX + 68, buttonY + 18, selected ? SELECTED : 0xFF444A50);
-            graphics.fill(buttonX + 1, buttonY + 1, buttonX + 67, buttonY + 17, locked ? 0xFF292D31 : 0xFF20242A);
+            drawRaisedPanel(graphics, buttonX, buttonY, 68, 18);
+            graphics.fill(buttonX + 1, buttonY + 1, buttonX + 67, buttonY + 17, locked ? LOCKED : selected ? SELECTED : BUTTON_FILL);
         }
     }
 
@@ -73,16 +80,34 @@ public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen
             for (int column = 0; column < columns; column++) {
                 int slotX = x + column * 18;
                 int slotY = y + row * 18;
-                graphics.fill(slotX - 1, slotY - 1, slotX + 17, slotY + 17, SLOT);
-                graphics.fill(slotX, slotY, slotX + 16, slotY + 16, SLOT_DARK);
+                graphics.fill(slotX - 1, slotY - 1, slotX + 17, slotY + 17, SLOT_DARK);
+                graphics.fill(slotX, slotY, slotX + 16, slotY + 16, SLOT_FILL);
+                graphics.fill(slotX + 16, slotY, slotX + 17, slotY + 17, SLOT_LIGHT);
+                graphics.fill(slotX, slotY + 16, slotX + 17, slotY + 17, SLOT_LIGHT);
             }
         }
     }
 
+    private void drawRaisedPanel(GuiGraphics graphics, int x, int y, int width, int height) {
+        graphics.fill(x, y, x + width, y + height, BACKGROUND);
+        graphics.fill(x, y, x + width - 1, y + 1, PANEL_LIGHT);
+        graphics.fill(x, y, x + 1, y + height - 1, PANEL_LIGHT);
+        graphics.fill(x + width - 1, y, x + width, y + height, PANEL_DARK);
+        graphics.fill(x, y + height - 1, x + width, y + height, PANEL_DARK);
+    }
+
+    private void drawSunkenPanel(GuiGraphics graphics, int x, int y, int width, int height) {
+        graphics.fill(x, y, x + width, y + height, BACKGROUND);
+        graphics.fill(x, y, x + width - 1, y + 1, PANEL_DARK);
+        graphics.fill(x, y, x + 1, y + height - 1, PANEL_DARK);
+        graphics.fill(x + width - 1, y, x + width, y + height, PANEL_LIGHT);
+        graphics.fill(x, y + height - 1, x + width, y + height, PANEL_LIGHT);
+    }
+
     @Override
     protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
-        graphics.drawString(font, title, titleLabelX, titleLabelY, 0xE8E8E8, false);
-        graphics.drawString(font, playerInventoryTitle, inventoryLabelX, inventoryLabelY, 0xE8E8E8, false);
+        graphics.drawString(font, title, titleLabelX, titleLabelY, 0x404040, false);
+        graphics.drawString(font, playerInventoryTitle, inventoryLabelX, inventoryLabelY, 0x404040, false);
 
         List<SurvivalRedstoneRecipe> recipes = menu.recipes();
         for (int i = 0; i < Math.min(6, recipes.size()); i++) {
@@ -93,10 +118,10 @@ public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen
             if (font.width(name) > 40) {
                 name = font.plainSubstrByWidth(name, 40);
             }
-            int color = recipe.level() > menu.getPlayerSurvivalRedstoneLevel() ? 0x777777 : 0xF0F0F0;
+            int color = recipe.level() > menu.getPlayerSurvivalRedstoneLevel() ? 0x555555 : 0x404040;
             graphics.drawString(font, name, 30, buttonY + 5, color, false);
             if (recipe.level() > 1) {
-                graphics.drawString(font, String.valueOf(recipe.level()), 70, buttonY + 5, 0xFF7777, false);
+                drawScaledString(graphics, String.valueOf(recipe.level()), 70, buttonY + 5, 8, RED_TEXT, true);
             }
         }
     }
@@ -128,15 +153,53 @@ public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen
         for (int i = 0; i < recipe.ingredients().size() && i < SurvivalRedstoneCraftingTableMenu.INPUT_SLOT_COUNT; i++) {
             SurvivalRedstoneRecipe.IngredientCount ingredient = recipe.ingredients().get(i);
             Slot slot = menu.slots.get(i);
-            int stored = menu.countStored(ingredient.item());
             graphics.pose().pushPose();
             graphics.pose().translate(0.0F, 0.0F, 200.0F);
-            graphics.drawString(font, String.valueOf(ingredient.count()), leftPos + slot.x + 1, topPos + slot.y + 1, ChatFormatting.RED.getColor(), false);
-            if (stored > 0) {
-                graphics.drawString(font, String.valueOf(stored), leftPos + slot.x + 1, topPos + slot.y + 9, ChatFormatting.GREEN.getColor(), false);
-            }
+            drawScaledString(graphics, String.valueOf(ingredient.count()), leftPos + slot.x + 1, topPos + slot.y + 1, 14, RED_TEXT, true);
             graphics.pose().popPose();
         }
+    }
+
+    private void renderScaledStackCounts(GuiGraphics graphics) {
+        for (Slot slot : menu.slots) {
+            if (!slot.hasItem() || slot.getItem().getCount() <= 1) {
+                continue;
+            }
+            String count = String.valueOf(slot.getItem().getCount());
+            if (font.width(count) <= 14) {
+                continue;
+            }
+            graphics.pose().pushPose();
+            graphics.pose().translate(0.0F, 0.0F, 210.0F);
+            drawScaledStringRight(graphics, count, leftPos + slot.x + 17, topPos + slot.y + 10, 14, WHITE_TEXT, true);
+            graphics.pose().popPose();
+        }
+    }
+
+    private void drawScaledString(GuiGraphics graphics, String text, int x, int y, int maxWidth, int color, boolean shadow) {
+        float scale = countScale(text, maxWidth);
+        graphics.pose().pushPose();
+        graphics.pose().translate(x, y, 0.0F);
+        graphics.pose().scale(scale, scale, 1.0F);
+        graphics.drawString(font, text, 0, 0, color, shadow);
+        graphics.pose().popPose();
+    }
+
+    private void drawScaledStringRight(GuiGraphics graphics, String text, int right, int y, int maxWidth, int color, boolean shadow) {
+        float scale = countScale(text, maxWidth);
+        int x = right - (int) Math.ceil(font.width(text) * scale);
+        if (shadow && color == WHITE_TEXT) {
+            drawScaledString(graphics, text, x + 1, y + 1, maxWidth, TEXT_SHADOW, false);
+        }
+        drawScaledString(graphics, text, x, y, maxWidth, color, shadow);
+    }
+
+    private float countScale(String text, int maxWidth) {
+        int width = font.width(text);
+        if (width <= maxWidth) {
+            return 1.0F;
+        }
+        return Math.max(MIN_COUNT_SCALE, maxWidth / (float) width);
     }
 
     @Override

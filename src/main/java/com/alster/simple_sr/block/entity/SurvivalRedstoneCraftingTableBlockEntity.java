@@ -1,6 +1,8 @@
 package com.alster.simple_sr.block.entity;
 
+import com.alster.simple_sr.Config;
 import com.alster.simple_sr.menu.SurvivalRedstoneCraftingTableMenu;
+import com.alster.simple_sr.recipe.SurvivalRedstoneRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -32,7 +34,17 @@ public class SurvivalRedstoneCraftingTableBlockEntity extends BlockEntity implem
 
         @Override
         public int getSlotLimit(int slot) {
-            return 16384;
+            return Config.MAX_MACHINE_INPUT_STACK_SIZE;
+        }
+
+        @Override
+        protected int getStackLimit(int slot, @NotNull ItemStack stack) {
+            return getInputSlotStackLimit(slot, stack);
+        }
+
+        @Override
+        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            return canPlaceInInputSlot(slot, stack);
         }
     };
     private LazyOptional<ItemStackHandler> lazyItemHandler = LazyOptional.empty();
@@ -78,6 +90,35 @@ public class SurvivalRedstoneCraftingTableBlockEntity extends BlockEntity implem
         return itemHandler;
     }
 
+    public boolean canPlaceInInputSlot(int slot, ItemStack stack) {
+        SurvivalRedstoneRecipe recipe = getSelectedRecipeDefinition();
+        if (recipe == null || stack.isEmpty() || slot < 0 || slot >= recipe.ingredients().size()) {
+            return false;
+        }
+        SurvivalRedstoneRecipe.IngredientCount ingredient = recipe.ingredients().get(slot);
+        ItemStack current = itemHandler.getStackInSlot(slot);
+        return stack.is(ingredient.item())
+                && (current.isEmpty() || ItemStack.isSameItemSameTags(current, stack))
+                && current.getCount() < getInputSlotStackLimit(slot, stack);
+    }
+
+    public int getInputSlotStackLimit(int slot, ItemStack stack) {
+        SurvivalRedstoneRecipe recipe = getSelectedRecipeDefinition();
+        if (recipe == null || stack.isEmpty() || slot < 0 || slot >= recipe.ingredients().size()) {
+            return 0;
+        }
+        SurvivalRedstoneRecipe.IngredientCount ingredient = recipe.ingredients().get(slot);
+        if (!stack.is(ingredient.item())) {
+            return 0;
+        }
+
+        ItemStack current = itemHandler.getStackInSlot(slot);
+        if (!current.isEmpty() && !ItemStack.isSameItemSameTags(current, stack)) {
+            return 0;
+        }
+        return Math.max(0, Math.min(Config.MAX_MACHINE_INPUT_STACK_SIZE, ingredient.count()));
+    }
+
     public int getSelectedRecipe() {
         return selectedRecipe;
     }
@@ -85,6 +126,13 @@ public class SurvivalRedstoneCraftingTableBlockEntity extends BlockEntity implem
     public void setSelectedRecipe(int selectedRecipe) {
         this.selectedRecipe = selectedRecipe;
         setChanged();
+    }
+
+    private SurvivalRedstoneRecipe getSelectedRecipeDefinition() {
+        if (selectedRecipe < 0 || selectedRecipe >= Config.survivalRedstoneRecipes.size()) {
+            return null;
+        }
+        return Config.survivalRedstoneRecipes.get(selectedRecipe);
     }
 
     public boolean inputsEmpty() {
