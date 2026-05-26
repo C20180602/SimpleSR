@@ -1,0 +1,5 @@
+{
+  "block.simple_sr.survival_redstone_crafting_table": "生电工作台",
+  "item.simple_sr.survival_redstone_core": "生电核心",
+  "itemGroup.simple_sr_tab": "简易生电"
+}

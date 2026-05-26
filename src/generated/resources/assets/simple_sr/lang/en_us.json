@@ -1,0 +1,7 @@
+{
+  "block.simple_sr.survival_redstone_crafting_table": "Survival Redstone Crafting Table",
+  "container.simple_sr.survival_redstone_crafting_table": "Survival Redstone Crafting Table",
+  "item.simple_sr.survival_redstone_core": "Survival Redstone Core",
+  "itemGroup.simple_sr_tab": "Simple Survival Redstone",
+  "recipe.simple_sr.iron_farm": "Iron Farm"
+}

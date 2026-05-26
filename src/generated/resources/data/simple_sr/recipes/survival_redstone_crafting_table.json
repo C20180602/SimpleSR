@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "survival_redstone_crafting_table",
+  "key": {
+    "C": {
+      "item": "simple_sr:survival_redstone_core"
+    },
+    "S": {
+      "item": "minecraft:stone"
+    },
+    "W": {
+      "tag": "minecraft:slabs"
+    }
+  },
+  "pattern": [
+    "WSW",
+    "SCS",
+    "WSW"
+  ],
+  "result": {
+    "item": "simple_sr:survival_redstone_crafting_table"
+  },
+  "show_notification": true
+}

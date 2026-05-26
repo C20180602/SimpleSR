@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "survival_redstone_core",
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "S": {
+      "item": "minecraft:stone"
+    }
+  },
+  "pattern": [
+    "SRS",
+    "RRR",
+    "SRS"
+  ],
+  "result": {
+    "item": "simple_sr:survival_redstone_core"
+  },
+  "show_notification": true
+}
