@@ -133,7 +133,7 @@ public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen
         }
         for (int i = 0; i < recipe.ingredients().size() && i < SurvivalRedstoneCraftingTableMenu.INPUT_SLOT_COUNT; i++) {
             SurvivalRedstoneRecipe.IngredientCount ingredient = recipe.ingredients().get(i);
-            if (menu.countStored(ingredient.item()) <= 0) {
+            if (menu.countStored(ingredient) <= 0) {
                 Slot slot = menu.slots.get(i);
                 RenderSystem.setShader(GameRenderer::getPositionTexShader);
                 RenderSystem.enableBlend();

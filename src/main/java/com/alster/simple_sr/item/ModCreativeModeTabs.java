@@ -21,6 +21,8 @@ public class ModCreativeModeTabs {
                 .displayItems((parameters, output) -> {
                     output.accept(ModItems.SURVIVAL_REDSTONE_CORE.get());
                     output.accept(ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.get());
+                    output.accept(ModBlocks.IRON_FARM.get());
+                    output.accept(ModBlocks.VILLAGER_BREEDER.get());
                 })
                 .build()
             );

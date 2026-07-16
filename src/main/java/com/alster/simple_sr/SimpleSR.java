@@ -6,6 +6,7 @@ import com.alster.simple_sr.item.ModCreativeModeTabs;
 import com.alster.simple_sr.item.ModItems;
 import com.alster.simple_sr.menu.ModMenuTypes;
 import com.alster.simple_sr.screen.SurvivalRedstoneCraftingTableScreen;
+import com.alster.simple_sr.screen.VillagerBreederScreen;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -91,9 +92,10 @@ public class SimpleSR
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // Some client setup code
-            event.enqueueWork(() ->
-                    MenuScreens.register(ModMenuTypes.SURVIVAL_REDSTONE_CRAFTING_TABLE_MENU.get(), SurvivalRedstoneCraftingTableScreen::new)
-            );
+            event.enqueueWork(() -> {
+                MenuScreens.register(ModMenuTypes.SURVIVAL_REDSTONE_CRAFTING_TABLE_MENU.get(), SurvivalRedstoneCraftingTableScreen::new);
+                MenuScreens.register(ModMenuTypes.VILLAGER_BREEDER_MENU.get(), VillagerBreederScreen::new);
+            });
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }

@@ -1,6 +1,10 @@
 {
+  "block.simple_sr.iron_farm": "Iron Farm",
   "block.simple_sr.survival_redstone_crafting_table": "Survival Redstone Crafting Table",
+  "block.simple_sr.villager_breeder": "Villager Breeder",
+  "container.simple_sr.iron_farm": "Iron Farm",
   "container.simple_sr.survival_redstone_crafting_table": "Survival Redstone Crafting Table",
+  "container.simple_sr.villager_breeder": "Villager Breeder",
   "item.simple_sr.survival_redstone_core": "Survival Redstone Core",
   "itemGroup.simple_sr_tab": "Simple Survival Redstone",
   "recipe.simple_sr.iron_farm": "Iron Farm"

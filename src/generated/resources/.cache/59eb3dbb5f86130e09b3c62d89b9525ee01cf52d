@@ -1,2 +1,4 @@
-// 1.20.1	2026-05-25T23:55:40.0613086	Loot Tables
+// 1.20.1	2026-07-16T18:32:01.4575248	Loot Tables
+55fc247d7508d2cd8228c4bfb6b650054b221741 data/simple_sr/loot_tables/blocks/iron_farm.json
 1f3378b7974295a0f62a9f9cd8e80b8311126707 data/simple_sr/loot_tables/blocks/survival_redstone_crafting_table.json
+c1df2902a647509f4a90b8f3ff5fbac8226e9d60 data/simple_sr/loot_tables/blocks/villager_breeder.json

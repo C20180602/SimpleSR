@@ -18,5 +18,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
         basicItem(ModItems.SURVIVAL_REDSTONE_CORE.get());
         withExistingParent(ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.getId().getPath(),
                 modLoc("block/survival_redstone_crafting_table"));
+        withExistingParent(ModBlocks.IRON_FARM.getId().getPath(),
+                modLoc("block/iron_farm"));
+        withExistingParent(ModBlocks.VILLAGER_BREEDER.getId().getPath(),
+                modLoc("block/villager_breeder"));
     }
 }

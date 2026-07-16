@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "simple_sr:block/villager_breeder_side",
+    "east": "simple_sr:block/villager_breeder_side",
+    "north": "simple_sr:block/villager_breeder_front",
+    "particle": "simple_sr:block/villager_breeder_side",
+    "south": "simple_sr:block/villager_breeder_side",
+    "up": "simple_sr:block/villager_breeder_side",
+    "west": "simple_sr:block/villager_breeder_side"
+  }
+}

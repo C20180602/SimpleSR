@@ -26,6 +26,32 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockItem(ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.get(),
                 models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/survival_redstone_crafting_table")));
+
+        horizontalBlock(ModBlocks.IRON_FARM.get(), models().cube(
+                "iron_farm",
+                modLoc("block/iron_farm_side"),
+                modLoc("block/iron_farm_side"),
+                modLoc("block/iron_farm_front"),
+                modLoc("block/iron_farm_side"),
+                modLoc("block/iron_farm_side"),
+                modLoc("block/iron_farm_side")
+        ).texture("particle", modLoc("block/iron_farm_side")));
+
+        simpleBlockItem(ModBlocks.IRON_FARM.get(),
+                models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/iron_farm")));
+
+        horizontalBlock(ModBlocks.VILLAGER_BREEDER.get(), models().cube(
+                "villager_breeder",
+                modLoc("block/villager_breeder_side"),
+                modLoc("block/villager_breeder_side"),
+                modLoc("block/villager_breeder_front"),
+                modLoc("block/villager_breeder_side"),
+                modLoc("block/villager_breeder_side"),
+                modLoc("block/villager_breeder_side")
+        ).texture("particle", modLoc("block/villager_breeder_side")));
+
+        simpleBlockItem(ModBlocks.VILLAGER_BREEDER.get(),
+                models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/villager_breeder")));
     }
 
 }

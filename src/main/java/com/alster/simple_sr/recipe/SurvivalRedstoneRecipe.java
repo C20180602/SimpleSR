@@ -3,6 +3,7 @@ package com.alster.simple_sr.recipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
@@ -13,12 +14,12 @@ public record SurvivalRedstoneRecipe(String id, String nameKey, int level, List<
     }
 
     public boolean needs(Item item) {
-        return ingredients.stream().anyMatch(ingredient -> ingredient.item() == item);
+        return ingredients.stream().anyMatch(ingredient -> ingredient.ingredient().test(new ItemStack(item)));
     }
 
     public int requiredCount(Item item) {
         return ingredients.stream()
-                .filter(ingredient -> ingredient.item() == item)
+                .filter(ingredient -> ingredient.ingredient().test(new ItemStack(item)))
                 .mapToInt(IngredientCount::count)
                 .sum();
     }
@@ -27,13 +28,24 @@ public record SurvivalRedstoneRecipe(String id, String nameKey, int level, List<
         return result.copy();
     }
 
-    public record IngredientCount(Item item, int count) {
+    public record IngredientCount(Ingredient ingredient, int count) {
         public ItemStack stack() {
-            return new ItemStack(item, Math.min(count, new ItemStack(item).getMaxStackSize()));
+            ItemStack[] matchingStacks = ingredient.getItems();
+            if (matchingStacks.length == 0) {
+                return ItemStack.EMPTY;
+            }
+            ItemStack displayStack = matchingStacks[0].copy();
+            displayStack.setCount(Math.min(count, displayStack.getMaxStackSize()));
+            return displayStack;
         }
 
         public ResourceLocation itemId() {
-            return ForgeRegistries.ITEMS.getKey(item);
+            ItemStack[] matchingStacks = ingredient.getItems();
+            return matchingStacks.length == 0 ? null : ForgeRegistries.ITEMS.getKey(matchingStacks[0].getItem());
+        }
+
+        public boolean matches(ItemStack stack) {
+            return ingredient.test(stack);
         }
     }
 }

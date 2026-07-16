@@ -5,8 +5,10 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -44,9 +46,11 @@ public class Config
             .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), Config::validateItemName);
 
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> SURVIVAL_REDSTONE_RECIPES = BUILDER
-            .comment("Machine trade recipes as JSON strings. Fields: id, name_key, level, ingredients[{item,count}], result{item,count}.")
+            .comment("Machine trade recipes as JSON strings. Ingredients support item or tag: ingredients[{item,count}] or ingredients[{tag,count}].")
             .defineListAllowEmpty("survivalRedstoneCraftingTable.recipes", List.of("""
-                    {"id":"iron_farm","name_key":"recipe.simple_sr.iron_farm","level":1,"ingredients":[{"item":"minecraft:iron_shovel","count":3},{"item":"minecraft:lava_bucket","count":1},{"item":"minecraft:water_bucket","count":2},{"item":"minecraft:oak_planks","count":128}],"result":{"item":"minecraft:dirt","count":1}}
+                    {"id":"iron_farm","name_key":"recipe.simple_sr.iron_farm","level":1,"ingredients":[{"item":"minecraft:cobblestone","count":64},{"item":"minecraft:stone_shovel","count":3},{"item":"minecraft:lava_bucket","count":1},{"item":"minecraft:water_bucket","count":2},{"item":"minecraft:barrel","count":3},{"item":"minecraft:chest","count":2},{"tag":"minecraft:beds","count":3},{"item":"minecraft:emerald","count":3},{"tag":"minecraft:signs","count":9}],"result":{"item":"simple_sr:iron_farm","count":1}}
+                    """, """
+                    {"id":"villager_breeder","name_key":"recipe.simple_sr.villager_breeder","level":1,"ingredients":[{"tag":"minecraft:planks","count":128},{"item":"minecraft:stone_hoe","count":1},{"item":"minecraft:water_bucket","count":2},{"item":"minecraft:composter","count":2},{"tag":"minecraft:trapdoors","count":13},{"tag":"minecraft:beds","count":5},{"item":"minecraft:torch","count":8},{"item":"minecraft:emerald","count":2},{"item":"minecraft:carrot","count":20}],"result":{"item":"simple_sr:villager_breeder","count":1}}
                     """), entry -> entry instanceof String);
 
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> SURVIVAL_REDSTONE_LEVELS = BUILDER
@@ -102,10 +106,21 @@ public class Config
             JsonArray ingredientArray = object.getAsJsonArray("ingredients");
             for (int i = 0; i < ingredientArray.size(); i++) {
                 JsonObject ingredientObject = ingredientArray.get(i).getAsJsonObject();
-                Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ingredientObject.get("item").getAsString()));
                 int count = ingredientObject.get("count").getAsInt();
-                if (item != null && count > 0) {
-                    ingredients.add(new SurvivalRedstoneRecipe.IngredientCount(item, count));
+                Ingredient ingredient;
+                if (ingredientObject.has("item")) {
+                    Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(ingredientObject.get("item").getAsString()));
+                    if (item == null) {
+                        continue;
+                    }
+                    ingredient = Ingredient.of(item);
+                } else if (ingredientObject.has("tag")) {
+                    ingredient = Ingredient.of(ItemTags.create(new ResourceLocation(ingredientObject.get("tag").getAsString())));
+                } else {
+                    continue;
+                }
+                if (count > 0) {
+                    ingredients.add(new SurvivalRedstoneRecipe.IngredientCount(ingredient, count));
                 }
             }
 

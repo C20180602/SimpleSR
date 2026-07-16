@@ -17,6 +17,16 @@ public class ModBlockEntities {
                     () -> BlockEntityType.Builder.of(SurvivalRedstoneCraftingTableBlockEntity::new,
                             ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<IronFarmBlockEntity>> IRON_FARM_BE =
+            BLOCK_ENTITIES.register("iron_farm",
+                    () -> BlockEntityType.Builder.of(IronFarmBlockEntity::new,
+                            ModBlocks.IRON_FARM.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<VillagerBreederBlockEntity>> VILLAGER_BREEDER_BE =
+            BLOCK_ENTITIES.register("villager_breeder",
+                    () -> BlockEntityType.Builder.of(VillagerBreederBlockEntity::new,
+                            ModBlocks.VILLAGER_BREEDER.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

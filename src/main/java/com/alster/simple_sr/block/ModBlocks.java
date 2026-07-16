@@ -19,7 +19,21 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SURVIVAL_REDSTONE_CRAFTING_TABLE
             = registerBlock("survival_redstone_crafting_table",
-            () -> new SurvivalRedstoneCraftingTableBlock(BlockBehaviour.Properties.of().strength(2.5f, 3.0f)));
+            () -> new SurvivalRedstoneCraftingTableBlock(machineProperties()));
+
+    public static final RegistryObject<Block> IRON_FARM
+            = registerBlock("iron_farm",
+            () -> new IronFarmBlock(machineProperties()));
+
+    public static final RegistryObject<Block> VILLAGER_BREEDER
+            = registerBlock("villager_breeder",
+            () -> new VillagerBreederBlock(machineProperties()));
+
+    public static BlockBehaviour.Properties machineProperties() {
+        return BlockBehaviour.Properties.of()
+                .strength(2.5f, 3.0f)
+                .requiresCorrectToolForDrops();
+    }
 
     private static <T extends Block> void registerBlockItems(String name, RegistryObject<T> block) {
         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));

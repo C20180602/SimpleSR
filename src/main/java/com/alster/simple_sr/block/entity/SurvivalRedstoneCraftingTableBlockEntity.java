@@ -97,7 +97,7 @@ public class SurvivalRedstoneCraftingTableBlockEntity extends BlockEntity implem
         }
         SurvivalRedstoneRecipe.IngredientCount ingredient = recipe.ingredients().get(slot);
         ItemStack current = itemHandler.getStackInSlot(slot);
-        return stack.is(ingredient.item())
+        return ingredient.matches(stack)
                 && (current.isEmpty() || ItemStack.isSameItemSameTags(current, stack))
                 && current.getCount() < getInputSlotStackLimit(slot, stack);
     }
@@ -108,7 +108,7 @@ public class SurvivalRedstoneCraftingTableBlockEntity extends BlockEntity implem
             return 0;
         }
         SurvivalRedstoneRecipe.IngredientCount ingredient = recipe.ingredients().get(slot);
-        if (!stack.is(ingredient.item())) {
+        if (!ingredient.matches(stack)) {
             return 0;
         }
 

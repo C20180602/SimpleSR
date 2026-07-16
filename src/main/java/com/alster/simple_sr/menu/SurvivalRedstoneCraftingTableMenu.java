@@ -14,7 +14,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -141,11 +140,11 @@ public class SurvivalRedstoneCraftingTableMenu extends AbstractContainerMenu {
         return false;
     }
 
-    public int countStored(Item item) {
+    public int countStored(SurvivalRedstoneRecipe.IngredientCount ingredient) {
         int count = 0;
         for (int i = 0; i < INPUT_SLOT_COUNT; i++) {
             ItemStack stack = slots.get(i).getItem();
-            if (!stack.isEmpty() && stack.is(item)) {
+            if (!stack.isEmpty() && ingredient.matches(stack)) {
                 count += stack.getCount();
             }
         }
@@ -166,7 +165,7 @@ public class SurvivalRedstoneCraftingTableMenu extends AbstractContainerMenu {
             return false;
         }
         for (SurvivalRedstoneRecipe.IngredientCount ingredient : recipe.ingredients()) {
-            if (countStored(ingredient.item()) < ingredient.count()) {
+            if (countStored(ingredient) < ingredient.count()) {
                 return false;
             }
         }

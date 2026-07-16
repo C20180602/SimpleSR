@@ -16,6 +16,9 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<SurvivalRedstoneCraftingTableMenu>> SURVIVAL_REDSTONE_CRAFTING_TABLE_MENU =
             registerMenuType("survival_redstone_crafting_table", SurvivalRedstoneCraftingTableMenu::new);
 
+    public static final RegistryObject<MenuType<VillagerBreederMenu>> VILLAGER_BREEDER_MENU =
+            registerMenuType("villager_breeder", VillagerBreederMenu::new);
+
     private static <T extends net.minecraft.world.inventory.AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(
             String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));
