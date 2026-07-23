@@ -26,6 +26,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.get());
         dropSelf(ModBlocks.IRON_FARM.get());
         dropSelf(ModBlocks.VILLAGER_BREEDER.get());
+        dropSelf(ModBlocks.VILLAGER_TRADING_HALL.get());
     }
     @Override
     protected Iterable<Block> getKnownBlocks() {

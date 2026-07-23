@@ -2,8 +2,16 @@
   "block.simple_sr.iron_farm": "刷铁机",
   "block.simple_sr.survival_redstone_crafting_table": "生电工作台",
   "block.simple_sr.villager_breeder": "村民繁殖机",
+  "block.simple_sr.villager_trading_hall": "村民交易所",
+  "button.simple_sr.refresh": "刷新交易",
+  "button.simple_sr.sort_number": "编号",
+  "button.simple_sr.sort_profession": "职业",
+  "button.simple_sr.submit": "提交",
   "container.simple_sr.iron_farm": "刷铁机",
   "container.simple_sr.villager_breeder": "村民繁殖机",
+  "container.simple_sr.villager_trading_hall": "村民交易所",
   "item.simple_sr.survival_redstone_core": "生电核心",
-  "itemGroup.simple_sr_tab": "简易生电"
+  "itemGroup.simple_sr_tab": "简易生电",
+  "recipe.simple_sr.villager_trading_hall": "村民交易所",
+  "screen.simple_sr.trades": "交易"
 }

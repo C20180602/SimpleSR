@@ -22,7 +22,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(ModBlockTags.MACHINES)
                 .add(ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.get())
                 .add(ModBlocks.IRON_FARM.get())
-                .add(ModBlocks.VILLAGER_BREEDER.get());
+                .add(ModBlocks.VILLAGER_BREEDER.get())
+                .add(ModBlocks.VILLAGER_TRADING_HALL.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .addTag(ModBlockTags.MACHINES);
         tag(BlockTags.NEEDS_STONE_TOOL)

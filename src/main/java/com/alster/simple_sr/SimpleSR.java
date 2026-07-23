@@ -7,6 +7,7 @@ import com.alster.simple_sr.item.ModItems;
 import com.alster.simple_sr.menu.ModMenuTypes;
 import com.alster.simple_sr.screen.SurvivalRedstoneCraftingTableScreen;
 import com.alster.simple_sr.screen.VillagerBreederScreen;
+import com.alster.simple_sr.screen.VillagerTradingHallScreen;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -31,12 +32,14 @@ public class SimpleSR
 {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "simple_sr";
+    public static net.minecraft.resources.ResourceLocation id(String path) { return new net.minecraft.resources.ResourceLocation(MODID, path); }
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public SimpleSR(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
+        Network.register();
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -95,6 +98,7 @@ public class SimpleSR
             event.enqueueWork(() -> {
                 MenuScreens.register(ModMenuTypes.SURVIVAL_REDSTONE_CRAFTING_TABLE_MENU.get(), SurvivalRedstoneCraftingTableScreen::new);
                 MenuScreens.register(ModMenuTypes.VILLAGER_BREEDER_MENU.get(), VillagerBreederScreen::new);
+                MenuScreens.register(ModMenuTypes.VILLAGER_TRADING_HALL_MENU.get(), VillagerTradingHallScreen::new);
             });
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());

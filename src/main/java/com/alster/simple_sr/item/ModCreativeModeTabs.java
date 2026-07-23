@@ -23,6 +23,7 @@ public class ModCreativeModeTabs {
                     output.accept(ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.get());
                     output.accept(ModBlocks.IRON_FARM.get());
                     output.accept(ModBlocks.VILLAGER_BREEDER.get());
+                    output.accept(ModBlocks.VILLAGER_TRADING_HALL.get());
                 })
                 .build()
             );

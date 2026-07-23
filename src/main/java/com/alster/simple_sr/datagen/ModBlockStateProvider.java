@@ -52,6 +52,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockItem(ModBlocks.VILLAGER_BREEDER.get(),
                 models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/villager_breeder")));
+
+        horizontalBlock(ModBlocks.VILLAGER_TRADING_HALL.get(), models().cube(
+                "villager_trading_hall",
+                modLoc("block/villager_breeder_side"), modLoc("block/villager_breeder_side"),
+                modLoc("block/villager_breeder_front"), modLoc("block/villager_breeder_side"),
+                modLoc("block/villager_breeder_side"), modLoc("block/villager_breeder_side")
+        ).texture("particle", modLoc("block/villager_breeder_side")));
+        simpleBlockItem(ModBlocks.VILLAGER_TRADING_HALL.get(),
+                models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/villager_trading_hall")));
     }
 
 }

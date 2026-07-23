@@ -18,11 +18,19 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.get(), "Survival Redstone Crafting Table");
         add(ModBlocks.IRON_FARM.get(), "Iron Farm");
         add(ModBlocks.VILLAGER_BREEDER.get(), "Villager Breeder");
+        add(ModBlocks.VILLAGER_TRADING_HALL.get(), "Villager Trading Hall");
 
         add("itemGroup.simple_sr_tab", "Simple Survival Redstone");
         add("container.simple_sr.survival_redstone_crafting_table", "Survival Redstone Crafting Table");
         add("container.simple_sr.iron_farm", "Iron Farm");
         add("container.simple_sr.villager_breeder", "Villager Breeder");
+        add("container.simple_sr.villager_trading_hall", "Villager Trading Hall");
+        add("button.simple_sr.submit", "Submit");
+        add("button.simple_sr.refresh", "Refresh Trades");
+        add("button.simple_sr.sort_number", "No.");
+        add("button.simple_sr.sort_profession", "Job");
+        add("screen.simple_sr.trades", "Trades");
+        add("recipe.simple_sr.villager_trading_hall", "Villager Trading Hall");
         add("recipe.simple_sr.iron_farm", "Iron Farm");
     }
 }

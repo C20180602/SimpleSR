@@ -27,6 +27,11 @@ public class ModBlockEntities {
                     () -> BlockEntityType.Builder.of(VillagerBreederBlockEntity::new,
                             ModBlocks.VILLAGER_BREEDER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<VillagerTradingHallBlockEntity>> VILLAGER_TRADING_HALL_BE =
+            BLOCK_ENTITIES.register("villager_trading_hall",
+                    () -> BlockEntityType.Builder.of(VillagerTradingHallBlockEntity::new,
+                            ModBlocks.VILLAGER_TRADING_HALL.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

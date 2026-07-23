@@ -22,5 +22,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 modLoc("block/iron_farm"));
         withExistingParent(ModBlocks.VILLAGER_BREEDER.getId().getPath(),
                 modLoc("block/villager_breeder"));
+        withExistingParent(ModBlocks.VILLAGER_TRADING_HALL.getId().getPath(),
+                modLoc("block/villager_trading_hall"));
     }
 }

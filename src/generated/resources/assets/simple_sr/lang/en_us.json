@@ -2,10 +2,18 @@
   "block.simple_sr.iron_farm": "Iron Farm",
   "block.simple_sr.survival_redstone_crafting_table": "Survival Redstone Crafting Table",
   "block.simple_sr.villager_breeder": "Villager Breeder",
+  "block.simple_sr.villager_trading_hall": "Villager Trading Hall",
+  "button.simple_sr.refresh": "Refresh Trades",
+  "button.simple_sr.sort_number": "No.",
+  "button.simple_sr.sort_profession": "Job",
+  "button.simple_sr.submit": "Submit",
   "container.simple_sr.iron_farm": "Iron Farm",
   "container.simple_sr.survival_redstone_crafting_table": "Survival Redstone Crafting Table",
   "container.simple_sr.villager_breeder": "Villager Breeder",
+  "container.simple_sr.villager_trading_hall": "Villager Trading Hall",
   "item.simple_sr.survival_redstone_core": "Survival Redstone Core",
   "itemGroup.simple_sr_tab": "Simple Survival Redstone",
-  "recipe.simple_sr.iron_farm": "Iron Farm"
+  "recipe.simple_sr.iron_farm": "Iron Farm",
+  "recipe.simple_sr.villager_trading_hall": "Villager Trading Hall",
+  "screen.simple_sr.trades": "Trades"
 }
