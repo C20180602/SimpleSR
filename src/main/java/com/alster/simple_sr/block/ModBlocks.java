@@ -26,6 +26,26 @@ public class ModBlocks {
             = registerBlock("iron_farm",
             () -> new IronFarmBlock(machineProperties()));
 
+    public static final RegistryObject<Block> SLIME_TOWER
+            = registerBlock("slime_tower",
+            () -> new SlimeTowerBlock(machineProperties()));
+
+    public static final RegistryObject<Block> COBBLESTONE_FARM
+            = registerBlock("cobblestone_farm",
+            () -> new CobblestoneFarmBlock(machineProperties()));
+
+    public static final RegistryObject<Block> FURNACE_ARRAY
+            = registerBlock("furnace_array",
+            () -> new FurnaceArrayBlock(machineProperties()));
+
+    public static final RegistryObject<Block> RAIL_FARM
+            = registerBlock("rail_farm",
+            () -> new RailFarmBlock(machineProperties()));
+
+    public static final RegistryObject<Block> SWAMP_MOB_TOWER
+            = registerBlock("swamp_mob_tower",
+            () -> new SwampMobTowerBlock(machineProperties()));
+
     public static final RegistryObject<Block> VILLAGER_BREEDER
             = registerBlock("villager_breeder",
             () -> new VillagerBreederBlock(machineProperties()));

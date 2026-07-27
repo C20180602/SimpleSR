@@ -1,5 +1,11 @@
-// 1.20.1	2026-07-16T18:32:01.4625352	Item Models: simple_sr
+// 1.20.1	2026-07-25T00:15:24.5107605	Item Models: simple_sr
+9e3893a78a9879454ac970b730f8f52aad1ac5b9 assets/simple_sr/models/item/cobblestone_farm.json
+297b995f70f38da848b11a089e7c8c7aaa874d6a assets/simple_sr/models/item/furnace_array.json
 fdf072b688f14f33a960838f65a9de832c6a3f49 assets/simple_sr/models/item/iron_farm.json
+15b1fee0887b6728ea9f8cac36dc5d8d93d527b8 assets/simple_sr/models/item/rail_farm.json
+47fc56cb32080a3ea1f4bced42a7b34510250885 assets/simple_sr/models/item/slime_tower.json
 e738844fa8d2ae3f5fc069da9688aa481b7b941a assets/simple_sr/models/item/survival_redstone_core.json
 6f807b6e8f862c15caa08749e0039331fe3accc1 assets/simple_sr/models/item/survival_redstone_crafting_table.json
+ea9c0c68e1a3a7b4dc21a60cf07372587a298ca7 assets/simple_sr/models/item/swamp_mob_tower.json
 444b4ace5756294a05ec9f274e9b3cb624a78069 assets/simple_sr/models/item/villager_breeder.json
+1f872155f9ee7b459c1cbdf261cc88c0e93bd089 assets/simple_sr/models/item/villager_trading_hall.json

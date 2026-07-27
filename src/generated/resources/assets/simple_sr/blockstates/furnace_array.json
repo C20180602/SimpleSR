@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "simple_sr:block/furnace_array",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "simple_sr:block/furnace_array"
+    },
+    "facing=south": {
+      "model": "simple_sr:block/furnace_array",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "simple_sr:block/furnace_array",
+      "y": 270
+    }
+  }
+}

@@ -183,6 +183,8 @@ public class VillagerTradingHallScreen extends AbstractContainerScreen<VillagerT
     private void confirmDelete() { if (deleteIndex >= 0) click(400 + deleteIndex); closeDeleteDialog(); }
     private void renderDialog(GuiGraphics g, int mouseX, int mouseY, float partialTick) {
         if (!renameDialog && !deleteDialog) return;
+        g.pose().pushPose();
+        g.pose().translate(0.0F, 0.0F, 400.0F);
         g.fill(leftPos + 96, topPos + 58, leftPos + 274, topPos + 134, 0xff303030);
         g.fill(leftPos + 98, topPos + 60, leftPos + 272, topPos + 132, 0xffc6c6c6);
         if (renameDialog) {
@@ -192,6 +194,7 @@ public class VillagerTradingHallScreen extends AbstractContainerScreen<VillagerT
             g.drawString(font, Component.literal("\u786e\u5b9a\u5220\u9664\u6751\u6c11" + menu.getDisplayedVillagers().get(deleteIndex).name + "\u5417"), leftPos + 105, topPos + 76, 0x202020, false);
             deleteConfirmButton.render(g, mouseX, mouseY, partialTick); deleteCancelButton.render(g, mouseX, mouseY, partialTick);
         }
+        g.pose().popPose();
     }
     private void panel(GuiGraphics g, int x, int y, int w, int h) { g.fill(x,y,x+w,y+h,0xff8b8b8b); g.fill(x,y,x+w-1,y+1,0xffffffff); g.fill(x,y,x+1,y+h-1,0xffffffff); }
     private void slots(GuiGraphics g, int x, int y, int c, int r) { for(int yy=0;yy<r;yy++) for(int xx=0;xx<c;xx++){int sx=x+xx*18,sy=y+yy*18;g.fill(sx-1,sy-1,sx+17,sy+17,0xff373737);g.fill(sx,sy,sx+16,sy+16,0xff8b8b8b);}}

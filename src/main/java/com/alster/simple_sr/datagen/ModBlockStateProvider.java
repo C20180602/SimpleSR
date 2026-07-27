@@ -40,6 +40,46 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(ModBlocks.IRON_FARM.get(),
                 models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/iron_farm")));
 
+        horizontalBlock(ModBlocks.SLIME_TOWER.get(), models().cube(
+                "slime_tower",
+                modLoc("block/slime_tower_side"), modLoc("block/slime_tower_side"),
+                modLoc("block/slime_tower_front"), modLoc("block/slime_tower_side"),
+                modLoc("block/slime_tower_side"), modLoc("block/slime_tower_side")
+        ).texture("particle", modLoc("block/slime_tower_side")));
+        simpleBlockItem(ModBlocks.SLIME_TOWER.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/slime_tower")));
+
+        horizontalBlock(ModBlocks.COBBLESTONE_FARM.get(), models().cube(
+                "cobblestone_farm",
+                modLoc("block/cobblestone_farm_side"), modLoc("block/cobblestone_farm_side"),
+                modLoc("block/cobblestone_farm_front"), modLoc("block/cobblestone_farm_side"),
+                modLoc("block/cobblestone_farm_side"), modLoc("block/cobblestone_farm_side")
+        ).texture("particle", modLoc("block/cobblestone_farm_side")));
+        simpleBlockItem(ModBlocks.COBBLESTONE_FARM.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/cobblestone_farm")));
+
+        horizontalBlock(ModBlocks.FURNACE_ARRAY.get(), models().cube(
+                "furnace_array",
+                modLoc("block/furnace_array_side"), modLoc("block/furnace_array_side"),
+                modLoc("block/furnace_array_front"), modLoc("block/furnace_array_side"),
+                modLoc("block/furnace_array_side"), modLoc("block/furnace_array_side")
+        ).texture("particle", modLoc("block/furnace_array_side")));
+        simpleBlockItem(ModBlocks.FURNACE_ARRAY.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/furnace_array")));
+
+        horizontalBlock(ModBlocks.RAIL_FARM.get(), models().cube(
+                "rail_farm",
+                modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side"),
+                modLoc("block/rail_farm_front"), modLoc("block/rail_farm_side"),
+                modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side")
+        ).texture("particle", modLoc("block/rail_farm_side")));
+        simpleBlockItem(ModBlocks.RAIL_FARM.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/rail_farm")));
+
+        horizontalBlock(ModBlocks.SWAMP_MOB_TOWER.get(), models().cube(
+                "swamp_mob_tower",
+                modLoc("block/swamp_mob_tower_side"), modLoc("block/swamp_mob_tower_side"),
+                modLoc("block/swamp_mob_tower_front"), modLoc("block/swamp_mob_tower_side"),
+                modLoc("block/swamp_mob_tower_side"), modLoc("block/swamp_mob_tower_side")
+        ).texture("particle", modLoc("block/swamp_mob_tower_side")));
+        simpleBlockItem(ModBlocks.SWAMP_MOB_TOWER.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/swamp_mob_tower")));
+
         horizontalBlock(ModBlocks.VILLAGER_BREEDER.get(), models().cube(
                 "villager_breeder",
                 modLoc("block/villager_breeder_side"),

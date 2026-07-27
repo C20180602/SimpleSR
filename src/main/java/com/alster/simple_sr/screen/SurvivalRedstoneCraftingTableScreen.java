@@ -26,6 +26,8 @@ public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen
     private static final int WHITE_TEXT = 0xFFFFFFFF;
     private static final int TEXT_SHADOW = 0xFF3F3F3F;
     private static final float MIN_COUNT_SCALE = 0.55F;
+    private static final int VISIBLE_RECIPE_COUNT = 6;
+    private int recipeScroll;
 
     public SurvivalRedstoneCraftingTableScreen(SurvivalRedstoneCraftingTableMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -47,6 +49,7 @@ public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen
         drawSunkenPanel(graphics, x + 279, y + 61, 22, 22);
 
         drawRecipeButtons(graphics, x, y);
+        drawRecipeScrollbar(graphics, x, y);
         drawSlots(graphics, x + 90, y + 18, 9, 6);
         drawSlots(graphics, x + 90, y + 140, 9, 3);
         drawSlots(graphics, x + 90, y + 198, 9, 1);
@@ -65,14 +68,28 @@ public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen
 
     private void drawRecipeButtons(GuiGraphics graphics, int x, int y) {
         List<SurvivalRedstoneRecipe> recipes = menu.recipes();
-        for (int i = 0; i < Math.min(6, recipes.size()); i++) {
+        for (int i = 0; i < Math.min(VISIBLE_RECIPE_COUNT, recipes.size() - recipeScroll); i++) {
+            int recipeIndex = recipeScroll + i;
             int buttonX = x + 10;
             int buttonY = y + 18 + i * 18;
-            boolean selected = i == menu.getSelectedRecipeIndex();
-            boolean locked = recipes.get(i).level() > menu.getPlayerSurvivalRedstoneLevel();
+            boolean selected = recipeIndex == menu.getSelectedRecipeIndex();
+            boolean locked = recipes.get(recipeIndex).level() > menu.getPlayerSurvivalRedstoneLevel();
             drawRaisedPanel(graphics, buttonX, buttonY, 68, 18);
             graphics.fill(buttonX + 1, buttonY + 1, buttonX + 67, buttonY + 17, locked ? LOCKED : selected ? SELECTED : BUTTON_FILL);
         }
+    }
+
+    private void drawRecipeScrollbar(GuiGraphics graphics, int x, int y) {
+        int total = menu.recipes().size();
+        if (total <= VISIBLE_RECIPE_COUNT) return;
+        int trackX = x + 78;
+        int trackY = y + 18;
+        int trackHeight = 108;
+        int thumbHeight = Math.max(18, trackHeight * VISIBLE_RECIPE_COUNT / total);
+        int maxScroll = total - VISIBLE_RECIPE_COUNT;
+        int thumbY = trackY + (trackHeight - thumbHeight) * recipeScroll / maxScroll;
+        graphics.fill(trackX, trackY, trackX + 3, trackY + trackHeight, PANEL_DARK);
+        graphics.fill(trackX, thumbY, trackX + 3, thumbY + thumbHeight, PANEL_LIGHT);
     }
 
     private void drawSlots(GuiGraphics graphics, int x, int y, int columns, int rows) {
@@ -110,8 +127,8 @@ public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen
         graphics.drawString(font, playerInventoryTitle, inventoryLabelX, inventoryLabelY, 0x404040, false);
 
         List<SurvivalRedstoneRecipe> recipes = menu.recipes();
-        for (int i = 0; i < Math.min(6, recipes.size()); i++) {
-            SurvivalRedstoneRecipe recipe = recipes.get(i);
+        for (int i = 0; i < Math.min(VISIBLE_RECIPE_COUNT, recipes.size() - recipeScroll); i++) {
+            SurvivalRedstoneRecipe recipe = recipes.get(recipeScroll + i);
             int buttonY = 20 + i * 18;
             graphics.renderItem(recipe.icon(), 12, buttonY);
             String name = Component.translatable(recipe.nameKey()).getString();
@@ -204,17 +221,29 @@ public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (button == 0) {
+            if (button == 0) {
             int relativeX = (int) mouseX - leftPos;
             int relativeY = (int) mouseY - topPos;
             if (relativeX >= 10 && relativeX < 78 && relativeY >= 18 && relativeY < 126) {
-                int recipeIndex = (relativeY - 18) / 18;
-                if (recipeIndex >= 0 && recipeIndex < Math.min(6, menu.recipes().size())) {
+                int recipeIndex = recipeScroll + (relativeY - 18) / 18;
+                if (recipeIndex >= recipeScroll && recipeIndex < Math.min(recipeScroll + VISIBLE_RECIPE_COUNT, menu.recipes().size())) {
                     minecraft.gameMode.handleInventoryButtonClick(menu.containerId, recipeIndex);
                     return true;
                 }
             }
         }
         return super.mouseClicked(mouseX, mouseY, button);
+    }
+
+    @Override
+    public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
+        int relativeX = (int) mouseX - leftPos;
+        int relativeY = (int) mouseY - topPos;
+        if (relativeX >= 6 && relativeX < 82 && relativeY >= 14 && relativeY < 126 && menu.recipes().size() > VISIBLE_RECIPE_COUNT) {
+            int maxScroll = menu.recipes().size() - VISIBLE_RECIPE_COUNT;
+            recipeScroll = Math.max(0, Math.min(maxScroll, recipeScroll - (int) Math.signum(delta)));
+            return true;
+        }
+        return super.mouseScrolled(mouseX, mouseY, delta);
     }
 }

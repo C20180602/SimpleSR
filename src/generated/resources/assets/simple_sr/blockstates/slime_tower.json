@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "simple_sr:block/slime_tower",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "simple_sr:block/slime_tower"
+    },
+    "facing=south": {
+      "model": "simple_sr:block/slime_tower",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "simple_sr:block/slime_tower",
+      "y": 270
+    }
+  }
+}

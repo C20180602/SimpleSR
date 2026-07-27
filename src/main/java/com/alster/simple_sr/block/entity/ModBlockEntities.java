@@ -22,6 +22,31 @@ public class ModBlockEntities {
                     () -> BlockEntityType.Builder.of(IronFarmBlockEntity::new,
                             ModBlocks.IRON_FARM.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<SlimeTowerBlockEntity>> SLIME_TOWER_BE =
+            BLOCK_ENTITIES.register("slime_tower",
+                    () -> BlockEntityType.Builder.of(SlimeTowerBlockEntity::new,
+                            ModBlocks.SLIME_TOWER.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<CobblestoneFarmBlockEntity>> COBBLESTONE_FARM_BE =
+            BLOCK_ENTITIES.register("cobblestone_farm",
+                    () -> BlockEntityType.Builder.of(CobblestoneFarmBlockEntity::new,
+                            ModBlocks.COBBLESTONE_FARM.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<FurnaceArrayBlockEntity>> FURNACE_ARRAY_BE =
+            BLOCK_ENTITIES.register("furnace_array",
+                    () -> BlockEntityType.Builder.of(FurnaceArrayBlockEntity::new,
+                            ModBlocks.FURNACE_ARRAY.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<RailFarmBlockEntity>> RAIL_FARM_BE =
+            BLOCK_ENTITIES.register("rail_farm",
+                    () -> BlockEntityType.Builder.of(RailFarmBlockEntity::new,
+                            ModBlocks.RAIL_FARM.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<SwampMobTowerBlockEntity>> SWAMP_MOB_TOWER_BE =
+            BLOCK_ENTITIES.register("swamp_mob_tower",
+                    () -> BlockEntityType.Builder.of(SwampMobTowerBlockEntity::new,
+                            ModBlocks.SWAMP_MOB_TOWER.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<VillagerBreederBlockEntity>> VILLAGER_BREEDER_BE =
             BLOCK_ENTITIES.register("villager_breeder",
                     () -> BlockEntityType.Builder.of(VillagerBreederBlockEntity::new,

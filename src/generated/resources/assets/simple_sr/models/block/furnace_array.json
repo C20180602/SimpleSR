@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "simple_sr:block/furnace_array_side",
+    "east": "simple_sr:block/furnace_array_side",
+    "north": "simple_sr:block/furnace_array_front",
+    "particle": "simple_sr:block/furnace_array_side",
+    "south": "simple_sr:block/furnace_array_side",
+    "up": "simple_sr:block/furnace_array_side",
+    "west": "simple_sr:block/furnace_array_side"
+  }
+}

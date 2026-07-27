@@ -1,3 +1,5 @@
+run-data/logs
+
 # eclipse
 bin
 *.launch

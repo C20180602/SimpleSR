@@ -22,6 +22,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(ModBlockTags.MACHINES)
                 .add(ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.get())
                 .add(ModBlocks.IRON_FARM.get())
+                .add(ModBlocks.SLIME_TOWER.get())
+                .add(ModBlocks.COBBLESTONE_FARM.get())
+                .add(ModBlocks.FURNACE_ARRAY.get())
+                .add(ModBlocks.RAIL_FARM.get())
+                .add(ModBlocks.SWAMP_MOB_TOWER.get())
                 .add(ModBlocks.VILLAGER_BREEDER.get())
                 .add(ModBlocks.VILLAGER_TRADING_HALL.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)

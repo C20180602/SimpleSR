@@ -2,6 +2,11 @@
   "values": [
     "simple_sr:survival_redstone_crafting_table",
     "simple_sr:iron_farm",
+    "simple_sr:slime_tower",
+    "simple_sr:cobblestone_farm",
+    "simple_sr:furnace_array",
+    "simple_sr:rail_farm",
+    "simple_sr:swamp_mob_tower",
     "simple_sr:villager_breeder",
     "simple_sr:villager_trading_hall"
   ]

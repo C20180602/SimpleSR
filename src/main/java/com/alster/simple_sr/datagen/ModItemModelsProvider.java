@@ -20,6 +20,16 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 modLoc("block/survival_redstone_crafting_table"));
         withExistingParent(ModBlocks.IRON_FARM.getId().getPath(),
                 modLoc("block/iron_farm"));
+        withExistingParent(ModBlocks.SLIME_TOWER.getId().getPath(),
+                modLoc("block/slime_tower"));
+        withExistingParent(ModBlocks.COBBLESTONE_FARM.getId().getPath(),
+                modLoc("block/cobblestone_farm"));
+        withExistingParent(ModBlocks.FURNACE_ARRAY.getId().getPath(),
+                modLoc("block/furnace_array"));
+        withExistingParent(ModBlocks.RAIL_FARM.getId().getPath(),
+                modLoc("block/rail_farm"));
+        withExistingParent(ModBlocks.SWAMP_MOB_TOWER.getId().getPath(),
+                modLoc("block/swamp_mob_tower"));
         withExistingParent(ModBlocks.VILLAGER_BREEDER.getId().getPath(),
                 modLoc("block/villager_breeder"));
         withExistingParent(ModBlocks.VILLAGER_TRADING_HALL.getId().getPath(),

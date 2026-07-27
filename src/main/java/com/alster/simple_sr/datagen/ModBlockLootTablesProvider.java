@@ -25,6 +25,11 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
     protected void generate() {
         dropSelf(ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.get());
         dropSelf(ModBlocks.IRON_FARM.get());
+        dropSelf(ModBlocks.SLIME_TOWER.get());
+        dropSelf(ModBlocks.COBBLESTONE_FARM.get());
+        dropSelf(ModBlocks.FURNACE_ARRAY.get());
+        dropSelf(ModBlocks.RAIL_FARM.get());
+        dropSelf(ModBlocks.SWAMP_MOB_TOWER.get());
         dropSelf(ModBlocks.VILLAGER_BREEDER.get());
         dropSelf(ModBlocks.VILLAGER_TRADING_HALL.get());
     }

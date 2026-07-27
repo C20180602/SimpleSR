@@ -19,6 +19,18 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<VillagerBreederMenu>> VILLAGER_BREEDER_MENU =
             registerMenuType("villager_breeder", VillagerBreederMenu::new);
 
+    public static final RegistryObject<MenuType<SlimeTowerMenu>> SLIME_TOWER_MENU =
+            registerMenuType("slime_tower", SlimeTowerMenu::fromNetwork);
+
+    public static final RegistryObject<MenuType<FurnaceArrayMenu>> FURNACE_ARRAY_MENU =
+            registerMenuType("furnace_array", FurnaceArrayMenu::fromNetwork);
+
+    public static final RegistryObject<MenuType<RailFarmMenu>> RAIL_FARM_MENU =
+            registerMenuType("rail_farm", RailFarmMenu::fromNetwork);
+
+    public static final RegistryObject<MenuType<SwampMobTowerMenu>> SWAMP_MOB_TOWER_MENU =
+            registerMenuType("swamp_mob_tower", SwampMobTowerMenu::fromNetwork);
+
     public static final RegistryObject<MenuType<VillagerTradingHallMenu>> VILLAGER_TRADING_HALL_MENU =
             registerMenuType("villager_trading_hall", VillagerTradingHallMenu::new);
 
