@@ -27,6 +27,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.FURNACE_ARRAY.get())
                 .add(ModBlocks.RAIL_FARM.get())
                 .add(ModBlocks.SWAMP_MOB_TOWER.get())
+                .add(ModBlocks.HONEY_FARM.get())
                 .add(ModBlocks.VILLAGER_BREEDER.get())
                 .add(ModBlocks.VILLAGER_TRADING_HALL.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)

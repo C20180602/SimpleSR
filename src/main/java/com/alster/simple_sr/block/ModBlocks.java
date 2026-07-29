@@ -46,6 +46,10 @@ public class ModBlocks {
             = registerBlock("swamp_mob_tower",
             () -> new SwampMobTowerBlock(machineProperties()));
 
+    public static final RegistryObject<Block> HONEY_FARM
+            = registerBlock("honey_farm",
+            () -> new HoneyFarmBlock(machineProperties()));
+
     public static final RegistryObject<Block> VILLAGER_BREEDER
             = registerBlock("villager_breeder",
             () -> new VillagerBreederBlock(machineProperties()));

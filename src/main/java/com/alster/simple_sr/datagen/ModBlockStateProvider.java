@@ -80,6 +80,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ).texture("particle", modLoc("block/swamp_mob_tower_side")));
         simpleBlockItem(ModBlocks.SWAMP_MOB_TOWER.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/swamp_mob_tower")));
 
+        horizontalBlock(ModBlocks.HONEY_FARM.get(), models().cube(
+                "honey_farm",
+                modLoc("block/honey_farm_side"), modLoc("block/honey_farm_side"),
+                modLoc("block/honey_farm_front"), modLoc("block/honey_farm_side"),
+                modLoc("block/honey_farm_side"), modLoc("block/honey_farm_side")
+        ).texture("particle", modLoc("block/honey_farm_side")));
+        simpleBlockItem(ModBlocks.HONEY_FARM.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/honey_farm")));
+
         horizontalBlock(ModBlocks.VILLAGER_BREEDER.get(), models().cube(
                 "villager_breeder",
                 modLoc("block/villager_breeder_side"),

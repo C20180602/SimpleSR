@@ -31,6 +31,9 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<SwampMobTowerMenu>> SWAMP_MOB_TOWER_MENU =
             registerMenuType("swamp_mob_tower", SwampMobTowerMenu::fromNetwork);
 
+    public static final RegistryObject<MenuType<HoneyFarmMenu>> HONEY_FARM_MENU =
+            registerMenuType("honey_farm", HoneyFarmMenu::fromNetwork);
+
     public static final RegistryObject<MenuType<VillagerTradingHallMenu>> VILLAGER_TRADING_HALL_MENU =
             registerMenuType("villager_trading_hall", VillagerTradingHallMenu::new);
 

@@ -22,6 +22,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.FURNACE_ARRAY.get(), "50x Furnace Array");
         add(ModBlocks.RAIL_FARM.get(), "Rail Farm");
         add(ModBlocks.SWAMP_MOB_TOWER.get(), "Swamp Mob Tower");
+        add(ModBlocks.HONEY_FARM.get(), "Honey Farm");
         add(ModBlocks.VILLAGER_BREEDER.get(), "Villager Breeder");
         add(ModBlocks.VILLAGER_TRADING_HALL.get(), "Villager Trading Hall");
 
@@ -33,6 +34,7 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("container.simple_sr.furnace_array", "50x Furnace Array");
         add("container.simple_sr.rail_farm", "Rail Farm");
         add("container.simple_sr.swamp_mob_tower", "Swamp Mob Tower");
+        add("container.simple_sr.honey_farm", "Honey Farm");
         add("status.simple_sr.slime_tower.running", "Running");
         add("status.simple_sr.slime_tower.not_running", "Not a slime chunk");
         add("container.simple_sr.villager_breeder", "Villager Breeder");
@@ -51,6 +53,9 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("recipe.simple_sr.furnace_array", "50x Furnace Array");
         add("recipe.simple_sr.rail_farm", "Rail Farm");
         add("recipe.simple_sr.swamp_mob_tower", "Swamp Mob Tower");
+        add("recipe.simple_sr.honey_farm", "Honey Farm");
+        add("screen.simple_sr.honey_farm.input", "Input Chest");
+        add("screen.simple_sr.honey_farm.output", "Output Chest");
         add("screen.simple_sr.furnace_array.input", "Input Chest");
         add("screen.simple_sr.furnace_array.output", "Output Chest");
         add("screen.simple_sr.rail_farm.output", "Output Chest");
