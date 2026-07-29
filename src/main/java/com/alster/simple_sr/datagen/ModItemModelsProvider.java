@@ -30,6 +30,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 modLoc("block/rail_farm"));
         withExistingParent(ModBlocks.SWAMP_MOB_TOWER.getId().getPath(),
                 modLoc("block/swamp_mob_tower"));
+        withExistingParent(ModBlocks.HONEY_FARM.getId().getPath(),
+                modLoc("block/honey_farm"));
         withExistingParent(ModBlocks.VILLAGER_BREEDER.getId().getPath(),
                 modLoc("block/villager_breeder"));
         withExistingParent(ModBlocks.VILLAGER_TRADING_HALL.getId().getPath(),

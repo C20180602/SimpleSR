@@ -30,6 +30,7 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.FURNACE_ARRAY.get());
         dropSelf(ModBlocks.RAIL_FARM.get());
         dropSelf(ModBlocks.SWAMP_MOB_TOWER.get());
+        dropSelf(ModBlocks.HONEY_FARM.get());
         dropSelf(ModBlocks.VILLAGER_BREEDER.get());
         dropSelf(ModBlocks.VILLAGER_TRADING_HALL.get());
     }

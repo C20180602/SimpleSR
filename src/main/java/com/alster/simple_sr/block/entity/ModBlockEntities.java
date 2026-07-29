@@ -47,6 +47,11 @@ public class ModBlockEntities {
                     () -> BlockEntityType.Builder.of(SwampMobTowerBlockEntity::new,
                             ModBlocks.SWAMP_MOB_TOWER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<HoneyFarmBlockEntity>> HONEY_FARM_BE =
+            BLOCK_ENTITIES.register("honey_farm",
+                    () -> BlockEntityType.Builder.of(HoneyFarmBlockEntity::new,
+                            ModBlocks.HONEY_FARM.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<VillagerBreederBlockEntity>> VILLAGER_BREEDER_BE =
             BLOCK_ENTITIES.register("villager_breeder",
                     () -> BlockEntityType.Builder.of(VillagerBreederBlockEntity::new,

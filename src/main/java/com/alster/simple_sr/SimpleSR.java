@@ -12,6 +12,7 @@ import com.alster.simple_sr.screen.SlimeTowerScreen;
 import com.alster.simple_sr.screen.FurnaceArrayScreen;
 import com.alster.simple_sr.screen.RailFarmScreen;
 import com.alster.simple_sr.screen.SwampMobTowerScreen;
+import com.alster.simple_sr.screen.HoneyFarmScreen;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -107,6 +108,7 @@ public class SimpleSR
                 MenuScreens.register(ModMenuTypes.FURNACE_ARRAY_MENU.get(), FurnaceArrayScreen::new);
                 MenuScreens.register(ModMenuTypes.RAIL_FARM_MENU.get(), RailFarmScreen::new);
                 MenuScreens.register(ModMenuTypes.SWAMP_MOB_TOWER_MENU.get(), SwampMobTowerScreen::new);
+                MenuScreens.register(ModMenuTypes.HONEY_FARM_MENU.get(), HoneyFarmScreen::new);
             });
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
