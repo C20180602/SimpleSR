@@ -1,6 +1,6 @@
 # SimpleSR 项目交接文档
 
-更新时间：2026-07-25
+更新时间：2026-07-30
 
 这份文档用于帮助后续 Codex 快速理解 SimpleSR 项目的整体架构、机器实现方式以及修改时容易踩坑的地方。
 
@@ -223,6 +223,94 @@ level.getRecipeManager().getRecipeFor(
 - 两个计时器独立保存和运行。
 - 对应产物无法放入右侧箱子时，取消该次产出，不消耗输入玻璃瓶。
 - 破坏方块时左右两侧库存都会掉落。
+
+### 3.8 刷沙机 `sand_farm`
+
+文件：
+
+- `block/SandFarmBlock.java`
+- `block/entity/SandFarmBlockEntity.java`
+- `menu/SandFarmMenu.java`
+- `screen/SandFarmScreen.java`
+
+行为：
+
+- 12 个输入槽，每个输入槽接受任意带有重力属性的方块，而不是硬编码沙子、铁砧等物品。
+- 开启后每秒复制每个输入槽中的方块到 72 格产物箱。
+- 输入槽和产物箱均可手动存取；漏斗只能从产物箱抽取，不能抽取输入槽物品。
+- 输入为空时自动关闭；只有在末地维度运行，并在界面显示维度状态。
+- 产物无法完整放入时取消本次复制。
+
+### 3.9 固化机 `solidifier`
+
+文件：
+
+- `block/SolidifierBlock.java`
+- `block/entity/SolidifierBlockEntity.java`
+- `menu/SolidifierMenu.java`
+- `screen/SolidifierScreen.java`
+
+行为：
+
+- 左右各一个 54 格大型箱子，左侧读取任意颜色的混凝土粉末。
+- 每秒最多处理 20 个物品，使用运行时配方逻辑转为对应颜色的混凝土并放入右侧。
+- 输入侧和输出侧的手动存取、漏斗方向限制与熔炉阵列一致。
+- 仅在末地维度运行；非末地时界面显示“非末地维度附近，不运行”。
+
+### 3.10 潜影贝农场 `shulker_farm`
+
+文件：
+
+- `block/ShulkerFarmBlock.java`
+- `block/entity/ShulkerFarmBlockEntity.java`
+- `menu/ShulkerFarmMenu.java`
+- `screen/ShulkerFarmScreen.java`
+
+行为：
+
+- 54 格大型箱子容器。
+- 每 5 秒读取原版潜影贝战利品表，使用临时实体作为上下文，不生成真实潜影贝。
+- 产物无法完整放入时取消本次掉落。
+- 当前运行条件为仅在末地维度运行；历史上的末地城结构附近判定已取消。
+
+### 3.11 甘蔗竹子机 `bamboo_farm`
+
+文件：
+
+- `block/BambooFarmBlock.java`
+- `block/entity/BambooFarmBlockEntity.java`
+- `menu/BambooFarmMenu.java`
+- `screen/BambooFarmScreen.java`
+
+行为：
+
+- 54 格大型箱子容器，默认模式每 30 秒产出 1 个甘蔗。
+- 顶部按钮可切换甘蔗和竹子模式，模式会保存到方块实体 NBT。
+- 输出空间不足时取消本次产出，破坏机器时库存会掉落。
+
+### 3.12 打包机 `packer`
+
+文件：
+
+- `block/PackerBlock.java`
+- `block/entity/PackerBlockEntity.java`
+- `menu/PackerMenu.java`
+- `screen/PackerScreen.java`
+
+容器与方向：
+
+- 机器具有水平朝向，背面读取紧贴的容器，顶面读取紧贴上方的容器。
+- 背面容器需要至少 2 个潜影壳和 1 个箱子；材料可分布在多个槽位。
+- 顶面容器按漏斗向下抽取规则读取，兼容普通容器和 `WorldlyContainer`。
+- 机器自身是 27 格物品栏，潜影盒作为带 `BlockEntityTag.Items` 的物品保存。
+
+运行逻辑：
+
+- 当现有潜影盒均已装满、机器存在空槽、背面材料足够且上方有可取物品时，消耗 2 个潜影壳和 1 个箱子制作一个潜影盒。
+- 每 8 tick 最多取出 4 个物品，相当于漏斗速度的 4 倍，并持续装入当前潜影盒直到其装满。
+- 顶部无可取物品时不消耗材料、不生成空潜影盒，并在界面右上角显示“上方容器无物品可以取出”。
+- 背面材料不足时在界面左上角显示“制作潜影盒材料不足”。
+- GUI 使用正常 18×18 槽位，标注“打包机物品栏”和“背包”，并压缩了右侧空白。
 
 ## 4. 生电工作台与配方
 
