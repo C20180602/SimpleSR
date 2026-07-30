@@ -42,6 +42,26 @@ public class ModBlocks {
             = registerBlock("rail_farm",
             () -> new RailFarmBlock(machineProperties()));
 
+    public static final RegistryObject<Block> SAND_FARM
+            = registerBlock("sand_farm",
+            () -> new SandFarmBlock(machineProperties()));
+
+    public static final RegistryObject<Block> SOLIDIFIER
+            = registerBlock("solidifier",
+            () -> new SolidifierBlock(machineProperties()));
+
+    public static final RegistryObject<Block> SHULKER_FARM
+            = registerBlock("shulker_farm",
+            () -> new ShulkerFarmBlock(machineProperties()));
+
+    public static final RegistryObject<Block> BAMBOO_FARM
+            = registerBlock("bamboo_farm",
+            () -> new BambooFarmBlock(machineProperties()));
+
+    public static final RegistryObject<Block> PACKER
+            = registerBlock("packer",
+            () -> new PackerBlock(machineProperties()));
+
     public static final RegistryObject<Block> SWAMP_MOB_TOWER
             = registerBlock("swamp_mob_tower",
             () -> new SwampMobTowerBlock(machineProperties()));

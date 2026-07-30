@@ -8,6 +8,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -30,7 +32,14 @@ public class Config
     private static final String FURNACE_ARRAY_RECIPE = "{\"id\":\"furnace_array\",\"name_key\":\"recipe.simple_sr.furnace_array\",\"level\":1,\"ingredients\":[{\"item\":\"minecraft:cobblestone\",\"count\":192},{\"item\":\"minecraft:water_bucket\",\"count\":2},{\"item\":\"minecraft:redstone\",\"count\":32},{\"item\":\"minecraft:redstone_torch\",\"count\":10},{\"item\":\"minecraft:hopper\",\"count\":160},{\"item\":\"minecraft:furnace\",\"count\":50},{\"item\":\"minecraft:powered_rail\",\"count\":192},{\"item\":\"minecraft:rail\",\"count\":64},{\"item\":\"minecraft:lever\",\"count\":10},{\"item\":\"minecraft:chest\",\"count\":12},{\"item\":\"minecraft:oak_sign\",\"count\":10},{\"item\":\"minecraft:slime_block\",\"count\":8},{\"item\":\"minecraft:carpet\",\"count\":6},{\"item\":\"minecraft:observer\",\"count\":2},{\"item\":\"minecraft:chest_minecart\",\"count\":2},{\"item\":\"minecraft:sticky_piston\",\"count\":3},{\"item\":\"minecraft:netherrack\",\"count\":2},{\"item\":\"minecraft:flint_and_steel\",\"count\":1},{\"tag\":\"minecraft:fence_gates\",\"count\":64}],\"result\":{\"item\":\"simple_sr:furnace_array\",\"count\":1}}";
     private static final String RAIL_FARM_RECIPE = "{\"id\":\"rail_farm\",\"name_key\":\"recipe.simple_sr.rail_farm\",\"level\":1,\"ingredients\":[{\"item\":\"minecraft:observer\",\"count\":4},{\"item\":\"minecraft:piston\",\"count\":2},{\"item\":\"minecraft:dirt\",\"count\":2},{\"item\":\"minecraft:hopper\",\"count\":1},{\"item\":\"minecraft:chest\",\"count\":2}],\"result\":{\"item\":\"simple_sr:rail_farm\",\"count\":1}}";
     private static final String SWAMP_MOB_TOWER_RECIPE = "{\"id\":\"swamp_mob_tower\",\"name_key\":\"recipe.simple_sr.swamp_mob_tower\",\"level\":1,\"ingredients\":[{\"item\":\"minecraft:iron_pickaxe\",\"count\":3},{\"item\":\"minecraft:smooth_stone\",\"count\":768},{\"item\":\"minecraft:magma_block\",\"count\":48},{\"tag\":\"minecraft:fence_gates\",\"count\":32},{\"item\":\"minecraft:water_bucket\",\"count\":2},{\"item\":\"minecraft:redstone\",\"count\":256},{\"item\":\"minecraft:repeater\",\"count\":20},{\"item\":\"minecraft:redstone_torch\",\"count\":8},{\"item\":\"minecraft:armor_stand\",\"count\":1},{\"item\":\"minecraft:soul_campfire\",\"count\":22},{\"item\":\"minecraft:chest_minecart\",\"count\":2},{\"item\":\"minecraft:minecart\",\"count\":46},{\"tag\":\"minecraft:wooden_pressure_plates\",\"count\":14},{\"tag\":\"minecraft:wooden_trapdoors\",\"count\":256},{\"item\":\"minecraft:hopper\",\"count\":38},{\"item\":\"minecraft:observer\",\"count\":10},{\"item\":\"minecraft:powered_rail\",\"count\":6},{\"item\":\"minecraft:dispenser\",\"count\":3}],\"result\":{\"item\":\"simple_sr:swamp_mob_tower\",\"count\":1}}";
+    private static final String CURRENT_SWAMP_MOB_TOWER_RECIPE = SWAMP_MOB_TOWER_RECIPE.replace("minecraft:chest_minecart", "minecraft:hopper_minecart");
     private static final String HONEY_FARM_RECIPE = "{\"id\":\"honey_farm\",\"name_key\":\"recipe.simple_sr.honey_farm\",\"level\":1,\"ingredients\":[{\"item\":\"minecraft:chest\",\"count\":4},{\"item\":\"minecraft:shears\",\"count\":5},{\"item\":\"minecraft:hopper\",\"count\":14},{\"item\":\"minecraft:comparator\",\"count\":14},{\"item\":\"minecraft:dropper\",\"count\":14},{\"item\":\"minecraft:dispenser\",\"count\":14},{\"item\":\"minecraft:observer\",\"count\":14},{\"item\":\"minecraft:bee_nest\",\"count\":14},{\"tag\":\"minecraft:buttons\",\"count\":14},{\"item\":\"minecraft:smooth_stone\",\"count\":128},{\"item\":\"minecraft:glass\",\"count\":81},{\"item\":\"minecraft:redstone\",\"count\":70},{\"item\":\"minecraft:dirt\",\"count\":21},{\"tag\":\"minecraft:flowers\",\"count\":21}],\"result\":{\"item\":\"simple_sr:honey_farm\",\"count\":1}}";
+    private static final String SAND_FARM_RECIPE = "{\"id\":\"sand_farm\",\"name_key\":\"recipe.simple_sr.sand_farm\",\"level\":1,\"ingredients\":[{\"item\":\"minecraft:brown_mushroom\",\"count\":4},{\"item\":\"minecraft:bone_meal\",\"count\":32},{\"item\":\"minecraft:smooth_stone\",\"count\":64},{\"item\":\"minecraft:white_stained_glass\",\"count\":156},{\"item\":\"minecraft:slime_block\",\"count\":40},{\"item\":\"minecraft:observer\",\"count\":34},{\"item\":\"minecraft:glass\",\"count\":24},{\"item\":\"minecraft:repeater\",\"count\":20},{\"item\":\"minecraft:honey_block\",\"count\":16},{\"item\":\"minecraft:sticky_piston\",\"count\":14},{\"item\":\"minecraft:note_block\",\"count\":13},{\"tag\":\"minecraft:leaves\",\"count\":12},{\"item\":\"minecraft:stone_button\",\"count\":10},{\"item\":\"minecraft:obsidian\",\"count\":8},{\"item\":\"minecraft:scaffolding\",\"count\":8},{\"tag\":\"minecraft:fence_gates\",\"count\":6},{\"tag\":\"minecraft:wooden_trapdoors\",\"count\":6},{\"item\":\"minecraft:glass_pane\",\"count\":6},{\"item\":\"minecraft:water_bucket\",\"count\":2},{\"item\":\"minecraft:redstone_torch\",\"count\":4},{\"item\":\"minecraft:chest\",\"count\":4},{\"item\":\"minecraft:piston\",\"count\":1}],\"result\":{\"item\":\"simple_sr:sand_farm\",\"count\":1}}";
+    private static final String SOLIDIFIER_RECIPE = "{\"id\":\"solidifier\",\"name_key\":\"recipe.simple_sr.solidifier\",\"level\":1,\"ingredients\":[{\"item\":\"minecraft:white_stained_glass\",\"count\":233},{\"item\":\"minecraft:smooth_stone_slab\",\"count\":121},{\"item\":\"minecraft:obsidian\",\"count\":113},{\"item\":\"minecraft:observer\",\"count\":70},{\"item\":\"minecraft:smooth_stone\",\"count\":52},{\"item\":\"minecraft:end_stone_bricks\",\"count\":48},{\"item\":\"minecraft:glowstone\",\"count\":48},{\"tag\":\"minecraft:signs\",\"count\":36},{\"item\":\"minecraft:piston\",\"count\":22},{\"item\":\"minecraft:redstone\",\"count\":20},{\"item\":\"minecraft:sticky_piston\",\"count\":18},{\"item\":\"minecraft:end_stone_brick_stairs\",\"count\":16},{\"item\":\"minecraft:slime_block\",\"count\":16},{\"tag\":\"minecraft:fence_gates\",\"count\":14},{\"tag\":\"minecraft:wooden_trapdoors\",\"count\":8},{\"item\":\"minecraft:glass_pane\",\"count\":8},{\"item\":\"minecraft:honey_block\",\"count\":8},{\"item\":\"minecraft:note_block\",\"count\":8},{\"item\":\"minecraft:redstone_torch\",\"count\":6},{\"item\":\"minecraft:water_bucket\",\"count\":2},{\"tag\":\"minecraft:doors\",\"count\":4},{\"item\":\"minecraft:chest\",\"count\":4},{\"item\":\"minecraft:string\",\"count\":4},{\"item\":\"minecraft:lever\",\"count\":2},{\"item\":\"minecraft:repeater\",\"count\":2},{\"item\":\"minecraft:redstone_block\",\"count\":2},{\"item\":\"minecraft:tnt\",\"count\":1},{\"item\":\"minecraft:dead_tube_coral_fan\",\"count\":1},{\"item\":\"minecraft:end_stone_brick_wall\",\"count\":1},{\"item\":\"minecraft:cauldron\",\"count\":1},{\"item\":\"minecraft:comparator\",\"count\":1}],\"result\":{\"item\":\"simple_sr:solidifier\",\"count\":1}}";
+    private static final String SHULKER_FARM_RECIPE = "{\"id\":\"shulker_farm\",\"name_key\":\"recipe.simple_sr.shulker_farm\",\"level\":1,\"ingredients\":[{\"item\":\"minecraft:smooth_stone\",\"count\":800},{\"item\":\"minecraft:scaffolding\",\"count\":1250},{\"item\":\"minecraft:stone_brick_wall\",\"count\":223},{\"item\":\"minecraft:stone_brick_stairs\",\"count\":105},{\"item\":\"minecraft:rail\",\"count\":64},{\"item\":\"minecraft:activator_rail\",\"count\":1},{\"item\":\"minecraft:powered_rail\",\"count\":128},{\"item\":\"minecraft:minecart\",\"count\":1},{\"item\":\"minecraft:lever\",\"count\":10},{\"item\":\"minecraft:hopper\",\"count\":16},{\"item\":\"minecraft:string\",\"count\":11},{\"item\":\"minecraft:chest\",\"count\":10},{\"item\":\"minecraft:oak_fence\",\"count\":8},{\"tag\":\"minecraft:wooden_trapdoors\",\"count\":4},{\"item\":\"minecraft:water_bucket\",\"count\":2},{\"item\":\"minecraft:soul_sand\",\"count\":4},{\"item\":\"minecraft:observer\",\"count\":2},{\"tag\":\"minecraft:wooden_pressure_plates\",\"count\":2},{\"tag\":\"minecraft:signs\",\"count\":2},{\"item\":\"minecraft:piston\",\"count\":2},{\"item\":\"minecraft:dispenser\",\"count\":1},{\"item\":\"minecraft:repeater\",\"count\":1},{\"item\":\"minecraft:flint_and_steel\",\"count\":1},{\"item\":\"minecraft:carved_pumpkin\",\"count\":10},{\"item\":\"minecraft:snow_block\",\"count\":20},{\"item\":\"minecraft:potion\",\"count\":9}],\"result\":{\"item\":\"simple_sr:shulker_farm\",\"count\":1}}";
+    private static final String CURRENT_SHULKER_FARM_RECIPE = SHULKER_FARM_RECIPE.replace("\"item\":\"minecraft:potion\",\"count\":9", "\"item\":\"minecraft:potion\",\"potion\":\"minecraft:long_invisibility\",\"count\":9");
+    private static final String BAMBOO_FARM_RECIPE = "{\"id\":\"bamboo_farm\",\"name_key\":\"recipe.simple_sr.bamboo_farm\",\"level\":1,\"ingredients\":[{\"item\":\"minecraft:glass\",\"count\":51},{\"item\":\"minecraft:water_bucket\",\"count\":2},{\"item\":\"minecraft:chest\",\"count\":2},{\"item\":\"minecraft:hopper\",\"count\":1},{\"item\":\"minecraft:piston\",\"count\":15},{\"item\":\"minecraft:sticky_piston\",\"count\":2},{\"item\":\"minecraft:redstone_block\",\"count\":2},{\"item\":\"minecraft:dirt\",\"count\":24},{\"item\":\"minecraft:redstone_torch\",\"count\":4},{\"item\":\"minecraft:redstone\",\"count\":20},{\"item\":\"minecraft:sugar_cane\",\"count\":15},{\"item\":\"minecraft:bamboo\",\"count\":15},{\"tag\":\"minecraft:leaves\",\"count\":15}],\"result\":{\"item\":\"simple_sr:bamboo_farm\",\"count\":1}}";
+    private static final String PACKER_RECIPE = "{\"id\":\"packer\",\"name_key\":\"recipe.simple_sr.packer\",\"level\":1,\"ingredients\":[{\"item\":\"minecraft:comparator\",\"count\":2},{\"item\":\"minecraft:dispenser\",\"count\":1},{\"item\":\"minecraft:piston\",\"count\":3},{\"item\":\"minecraft:redstone\",\"count\":3},{\"item\":\"minecraft:repeater\",\"count\":5},{\"item\":\"minecraft:redstone_torch\",\"count\":1},{\"item\":\"minecraft:hopper\",\"count\":8},{\"tag\":\"minecraft:slabs\",\"count\":1},{\"item\":\"minecraft:observer\",\"count\":1},{\"item\":\"minecraft:smooth_stone\",\"count\":20}],\"result\":{\"item\":\"simple_sr:packer\",\"count\":1}}";
     public static final int MAX_MACHINE_INPUT_STACK_SIZE = 16384;
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
@@ -61,7 +70,7 @@ public class Config
                     {"id":"villager_trading_hall","name_key":"recipe.simple_sr.villager_trading_hall","level":1,"ingredients":[{"item":"minecraft:magma_block","count":50},{"item":"minecraft:stone","count":192},{"item":"minecraft:powered_rail","count":64},{"item":"minecraft:rail","count":64},{"tag":"minecraft:trapdoors","count":50},{"item":"minecraft:minecart","count":1},{"item":"minecraft:oak_boat","count":1}],"result":{"item":"simple_sr:villager_trading_hall","count":1}}
                     """, """
                     {"id":"slime_tower","name_key":"recipe.simple_sr.slime_tower","level":1,"ingredients":[{"item":"minecraft:iron_pickaxe","count":8},{"item":"minecraft:torch","count":192},{"item":"minecraft:water_bucket","count":2},{"item":"minecraft:kelp","count":64},{"item":"minecraft:cobblestone","count":576},{"item":"minecraft:iron_block","count":16},{"item":"minecraft:carved_pumpkin","count":4},{"item":"minecraft:chest","count":2},{"item":"minecraft:magma_block","count":28},{"tag":"minecraft:fence_gates","count":64}],"result":{"item":"simple_sr:slime_tower","count":1}}
-                    """, SLIME_TOWER_RECIPE, COBBLESTONE_FARM_RECIPE, FURNACE_ARRAY_RECIPE, RAIL_FARM_RECIPE, SWAMP_MOB_TOWER_RECIPE, HONEY_FARM_RECIPE
+                      """, SLIME_TOWER_RECIPE, COBBLESTONE_FARM_RECIPE, FURNACE_ARRAY_RECIPE, RAIL_FARM_RECIPE, CURRENT_SWAMP_MOB_TOWER_RECIPE, HONEY_FARM_RECIPE, SAND_FARM_RECIPE, SOLIDIFIER_RECIPE, CURRENT_SHULKER_FARM_RECIPE, BAMBOO_FARM_RECIPE, PACKER_RECIPE
                     ), entry -> entry instanceof String);
 
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> SURVIVAL_REDSTONE_LEVELS = BUILDER
@@ -116,12 +125,56 @@ public class Config
             SURVIVAL_REDSTONE_RECIPES.set(recipeStrings);
         }
         if (recipeStrings.stream().noneMatch(recipe -> recipe.contains("\"id\":\"swamp_mob_tower\""))) {
-            recipeStrings.add(SWAMP_MOB_TOWER_RECIPE);
+            recipeStrings.add(CURRENT_SWAMP_MOB_TOWER_RECIPE);
             SURVIVAL_REDSTONE_RECIPES.set(recipeStrings);
+        }
+        for (int i = 0; i < recipeStrings.size(); i++) {
+            String recipe = recipeStrings.get(i);
+            if (recipe.contains("\"id\":\"swamp_mob_tower\"") && recipe.contains("minecraft:chest_minecart")) {
+                recipeStrings.set(i, CURRENT_SWAMP_MOB_TOWER_RECIPE);
+                SURVIVAL_REDSTONE_RECIPES.set(recipeStrings);
+            }
         }
         if (recipeStrings.stream().noneMatch(recipe -> recipe.contains("\"id\":\"honey_farm\""))) {
             recipeStrings.add(HONEY_FARM_RECIPE);
             SURVIVAL_REDSTONE_RECIPES.set(recipeStrings);
+        }
+        for (int i = 0; i < recipeStrings.size(); i++) {
+            String recipe = recipeStrings.get(i);
+            if (recipe.contains("\"id\":\"sand_farm\"")
+                    && (recipe.contains("\"tag\":\"minecraft:mushrooms\"")
+                    || recipe.contains("\"tag\":\"minecraft:stained_glass\"")
+                    || recipe.contains("\"tag\":\"minecraft:glass_panes\""))) {
+                recipeStrings.set(i, SAND_FARM_RECIPE);
+                SURVIVAL_REDSTONE_RECIPES.set(recipeStrings);
+            }
+        }
+        if (recipeStrings.stream().noneMatch(recipe -> recipe.contains("\"id\":\"sand_farm\""))) {
+            recipeStrings.add(SAND_FARM_RECIPE);
+            SURVIVAL_REDSTONE_RECIPES.set(recipeStrings);
+        }
+        if (recipeStrings.stream().noneMatch(recipe -> recipe.contains("\"id\":\"solidifier\""))) {
+            recipeStrings.add(SOLIDIFIER_RECIPE);
+            SURVIVAL_REDSTONE_RECIPES.set(recipeStrings);
+        }
+        if (recipeStrings.stream().noneMatch(recipe -> recipe.contains("\"id\":\"shulker_farm\""))) {
+            recipeStrings.add(CURRENT_SHULKER_FARM_RECIPE);
+            SURVIVAL_REDSTONE_RECIPES.set(recipeStrings);
+        }
+        if (recipeStrings.stream().noneMatch(recipe -> recipe.contains("\"id\":\"bamboo_farm\""))) {
+            recipeStrings.add(BAMBOO_FARM_RECIPE);
+            SURVIVAL_REDSTONE_RECIPES.set(recipeStrings);
+        }
+        if (recipeStrings.stream().noneMatch(recipe -> recipe.contains("\"id\":\"packer\""))) {
+            recipeStrings.add(PACKER_RECIPE);
+            SURVIVAL_REDSTONE_RECIPES.set(recipeStrings);
+        }
+        for (int i = 0; i < recipeStrings.size(); i++) {
+            String recipe = recipeStrings.get(i);
+            if (recipe.contains("\"id\":\"shulker_farm\"") && recipe.contains("\"item\":\"minecraft:potion\"") && !recipe.contains("\"potion\":\"minecraft:long_invisibility\"")) {
+                recipeStrings.set(i, CURRENT_SHULKER_FARM_RECIPE);
+                SURVIVAL_REDSTONE_RECIPES.set(recipeStrings);
+            }
         }
         survivalRedstoneRecipes = recipeStrings.stream()
                 .map(Config::parseRecipe)
@@ -150,7 +203,15 @@ public class Config
                     if (item == null) {
                         continue;
                     }
-                    ingredient = Ingredient.of(item);
+                    if (ingredientObject.has("potion")) {
+                        Potion potion = ForgeRegistries.POTIONS.getValue(new ResourceLocation(ingredientObject.get("potion").getAsString()));
+                        if (potion == null) continue;
+                        ItemStack potionStack = new ItemStack(item);
+                        PotionUtils.setPotion(potionStack, potion);
+                        ingredient = Ingredient.of(potionStack);
+                    } else {
+                        ingredient = Ingredient.of(item);
+                    }
                 } else if (ingredientObject.has("tag")) {
                     ingredient = Ingredient.of(ItemTags.create(new ResourceLocation(ingredientObject.get("tag").getAsString())));
                 } else {

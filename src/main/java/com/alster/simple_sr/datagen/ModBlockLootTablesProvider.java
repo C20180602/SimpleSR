@@ -29,6 +29,11 @@ public class ModBlockLootTablesProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.COBBLESTONE_FARM.get());
         dropSelf(ModBlocks.FURNACE_ARRAY.get());
         dropSelf(ModBlocks.RAIL_FARM.get());
+        dropSelf(ModBlocks.SAND_FARM.get());
+        dropSelf(ModBlocks.SOLIDIFIER.get());
+        dropSelf(ModBlocks.SHULKER_FARM.get());
+        dropSelf(ModBlocks.BAMBOO_FARM.get());
+        dropSelf(ModBlocks.PACKER.get());
         dropSelf(ModBlocks.SWAMP_MOB_TOWER.get());
         dropSelf(ModBlocks.HONEY_FARM.get());
         dropSelf(ModBlocks.VILLAGER_BREEDER.get());

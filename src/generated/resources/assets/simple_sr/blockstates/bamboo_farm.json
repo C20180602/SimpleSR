@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "simple_sr:block/bamboo_farm",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "simple_sr:block/bamboo_farm"
+    },
+    "facing=south": {
+      "model": "simple_sr:block/bamboo_farm",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "simple_sr:block/bamboo_farm",
+      "y": 270
+    }
+  }
+}

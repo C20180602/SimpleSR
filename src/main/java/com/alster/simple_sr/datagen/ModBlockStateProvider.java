@@ -72,6 +72,46 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ).texture("particle", modLoc("block/rail_farm_side")));
         simpleBlockItem(ModBlocks.RAIL_FARM.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/rail_farm")));
 
+        horizontalBlock(ModBlocks.SAND_FARM.get(), models().cube(
+                "sand_farm",
+                modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side"),
+                new ResourceLocation("minecraft", "block/sand"), modLoc("block/rail_farm_side"),
+                modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side")
+        ).texture("particle", modLoc("block/rail_farm_side")));
+        simpleBlockItem(ModBlocks.SAND_FARM.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/sand_farm")));
+
+        horizontalBlock(ModBlocks.SOLIDIFIER.get(), models().cube(
+                "solidifier",
+                modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side"),
+                new ResourceLocation("minecraft", "block/sand"), modLoc("block/rail_farm_side"),
+                modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side")
+        ).texture("particle", modLoc("block/rail_farm_side")));
+        simpleBlockItem(ModBlocks.SOLIDIFIER.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/solidifier")));
+
+        horizontalBlock(ModBlocks.SHULKER_FARM.get(), models().cube(
+                "shulker_farm",
+                modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side"),
+                new ResourceLocation("minecraft", "block/shulker_box"), modLoc("block/rail_farm_side"),
+                modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side")
+        ).texture("particle", modLoc("block/rail_farm_side")));
+        simpleBlockItem(ModBlocks.SHULKER_FARM.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/shulker_farm")));
+
+        horizontalBlock(ModBlocks.BAMBOO_FARM.get(), models().cube(
+                "bamboo_farm",
+                modLoc("block/cobblestone_farm_side"), modLoc("block/cobblestone_farm_side"),
+                new ResourceLocation("minecraft", "block/sugar_cane"), modLoc("block/cobblestone_farm_side"),
+                modLoc("block/cobblestone_farm_side"), modLoc("block/cobblestone_farm_side")
+        ).texture("particle", modLoc("block/cobblestone_farm_side")));
+        simpleBlockItem(ModBlocks.BAMBOO_FARM.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/bamboo_farm")));
+
+        horizontalBlock(ModBlocks.PACKER.get(), models().cube(
+                "packer",
+                modLoc("block/cobblestone_farm_side"), modLoc("block/cobblestone_farm_side"),
+                new ResourceLocation("minecraft", "block/shulker_box"), modLoc("block/cobblestone_farm_side"),
+                modLoc("block/cobblestone_farm_side"), modLoc("block/cobblestone_farm_side")
+        ).texture("particle", modLoc("block/cobblestone_farm_side")));
+        simpleBlockItem(ModBlocks.PACKER.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/packer")));
+
         horizontalBlock(ModBlocks.SWAMP_MOB_TOWER.get(), models().cube(
                 "swamp_mob_tower",
                 modLoc("block/swamp_mob_tower_side"), modLoc("block/swamp_mob_tower_side"),

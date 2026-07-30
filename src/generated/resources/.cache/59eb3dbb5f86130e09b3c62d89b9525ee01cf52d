@@ -1,9 +1,15 @@
-// 1.20.1	2026-07-25T00:15:24.5072373	Loot Tables
+// 1.20.1	2026-07-30T22:20:32.074489	Loot Tables
+8f7e9b797b9571a9e2e7308af4f1170ecdec5b6b data/simple_sr/loot_tables/blocks/bamboo_farm.json
 2c3bb7c804999cb8d42ac75b7c0e4f8d96e0385d data/simple_sr/loot_tables/blocks/cobblestone_farm.json
 d05bde41e18c90164401ae850b1cea7f25603cb9 data/simple_sr/loot_tables/blocks/furnace_array.json
+0434660b44ec4b3a00f0b3ef42cf210babc7a4de data/simple_sr/loot_tables/blocks/honey_farm.json
 55fc247d7508d2cd8228c4bfb6b650054b221741 data/simple_sr/loot_tables/blocks/iron_farm.json
+294b0db5da80990e7449dd48cb821533eb8003e8 data/simple_sr/loot_tables/blocks/packer.json
 6d095d971609be639b2dd82f9d01a6241915ba3c data/simple_sr/loot_tables/blocks/rail_farm.json
+14b87ce836ed9aab1185ec933706848f3ad33833 data/simple_sr/loot_tables/blocks/sand_farm.json
+3123453b612b65c61fa3725935919ac0f34e167d data/simple_sr/loot_tables/blocks/shulker_farm.json
 8c3732687ccd1e9684ae76aa1ae5c77490bc9a5e data/simple_sr/loot_tables/blocks/slime_tower.json
+ad075f913c57d9a0878b7f5ca786b90c212f9d4d data/simple_sr/loot_tables/blocks/solidifier.json
 1f3378b7974295a0f62a9f9cd8e80b8311126707 data/simple_sr/loot_tables/blocks/survival_redstone_crafting_table.json
 d263eb6479cea21d871e4871984f7f5df5dbddf7 data/simple_sr/loot_tables/blocks/swamp_mob_tower.json
 c1df2902a647509f4a90b8f3ff5fbac8226e9d60 data/simple_sr/loot_tables/blocks/villager_breeder.json

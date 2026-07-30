@@ -1,238 +1,208 @@
-# SimpleSR 项目理解与完整性检查
+# SimpleSR 项目理解文档
 
-## 项目概况
+更新时间：2026-07-30
 
-该项目是一个使用 IntelliJ IDEA/Gradle 开发的 Minecraft Forge 模组项目。
+## 1. 项目定位
 
-- Minecraft 版本：`1.20.1`
-- Forge 版本：`47.4.0`
-- Java 版本：`17`
+SimpleSR 是一个 Minecraft Forge Mod，目标是为生存模式提供更紧凑、更方便的红石辅助机器。
+
+- Minecraft：1.20.1
+- Forge：47.4.0
+- Java：17
 - 映射：Parchment `2023.09.03-1.20.1`
-- 主包名：`com.alster.simple_sr`
-- 运行配置：`client`、`server`、`gameTestServer`、`data`
+- Mod ID：`simple_sr`
+- 主包：`com.alster.simple_sr`
+- 构建工具：Gradle
 
-从 `gradle.properties` 的描述看，模组目标是 **Simple Survival Redstone**：添加一些简单机器，让生存模式红石搭建更容易、更紧凑。
+项目不是单纯的物品/方块模板，而是已经包含多个带容器、方块实体和客户端 GUI 的机器，以及一个保存模拟村民数据的交易所。
 
-## 当前已实现内容
-
-### 主模组入口
-
-`SimpleSR` 是主入口类，`@Mod(SimpleSR.MODID)` 使用的模组 ID 是 `simple_sr`。
-
-当前完成的职责：
-
-- 注册方块：`ModBlocks.register(modEventBus)`
-- 注册物品：`ModItems.register(modEventBus)`
-- 注册创造模式标签页：`ModCreativeModeTabs.register(modEventBus)`
-- 注册 Forge common config：`Config.SPEC`
-- 注册服务端启动事件日志
-- 注册客户端 setup 日志
-
-`addCreative` 方法目前为空。由于项目已经使用自定义 `CreativeModeTab` 的 `displayItems` 添加物品和方块，这个空方法暂时不影响当前创造标签页内容，但它属于 Forge 模板残留，可以删除或补齐用途。
-
-### 物品
-
-`ModItems` 当前注册了 1 个物品：
-
-- `survival_redstone_core`
-
-该物品使用普通 `Item.Properties()`，没有特殊行为。
-
-### 方块
-
-`ModBlocks` 当前注册了 1 个方块：
-
-- `survival_redstone_crafting_table`
-
-该方块目前是普通 `Block`，属性为：
-
-- 强度：`1.0f`
-- 爆炸抗性：`1.0f`
-
-同时 `registerBlock` 会自动注册同名 `BlockItem`，因此该方块可以作为物品出现在背包和创造标签页中。
-
-当前还没有实现：
-
-- 自定义方块类
-- GUI/菜单
-- 方块实体
-- 红石逻辑
-- 合成台或机器交互逻辑
-
-因此 `survival_redstone_crafting_table` 现在只是一个普通可放置方块，不具备工作台或机器功能。
-
-### 创造模式标签页
-
-`ModCreativeModeTabs` 注册了一个自定义标签页：
-
-- 注册名：`simple_sr_tab`
-- 图标：`survival_redstone_core`
-- 显示内容：
-  - `survival_redstone_core`
-  - `survival_redstone_crafting_table`
-
-该部分逻辑基本完整。
-
-### 配置
-
-`Config` 基本保留 Forge 模板示例：
-
-- `logDirtBlock`
-- `magicNumber`
-- `magicNumberIntroduction`
-- `items`
-
-这些配置只用于启动时输出日志，与当前模组目标没有直接关系。它可以作为配置系统示例保留，但正式功能开发时建议清理或替换为真实配置项。
-
-### 数据生成器
-
-`ModDataGenerator` 已接入以下 provider：
-
-- 配方生成
-- 战利品表生成
-- 方块标签生成
-- 物品标签生成
-- 方块状态/模型生成
-- 物品模型生成
-- 英文语言文件生成
-- 简体中文语言文件生成
-
-其中部分 provider 已能表达当前内容，部分还不完整。
-
-## 函数完整性检查
-
-### 完整或基本可用
-
-- `ModBlocks.register`
-- `ModBlocks.registerBlock`
-- `ModBlocks.registerBlockItems`
-- `ModItems.register`
-- `ModCreativeModeTabs.register`
-- `ModDataGenerator.gatherData`
-- `ModRecipesProvider.buildRecipes`
-- `ModLootTableProvider.create`
-- `ModBlockLootTablesProvider.generate`
-- `ModBlockLootTablesProvider.getKnownBlocks`
-- `ModItemModelsProvider.registerModels`
-- `ModEnUsLangProvider.addTranslations`
-
-### 空实现但当前不一定阻断
-
-- `SimpleSR.addCreative`
-  - 当前为空。
-  - 因为已有自定义创造标签页，这个方法不是当前功能必需。
-
-- `ModBlockTagsProvider.addTags`
-  - 当前为空。
-  - 如果方块需要挖掘工具、挖掘等级、通用标签等，需要在这里补齐。
-
-- `ModItemTagsProvider.addTags`
-  - 当前为空。
-  - 如果物品需要参与标签配方或 Forge 通用标签，需要在这里补齐。
-
-- `ModBlockTags.create` / `ModBlockTags.createForge`
-  - 私有工具方法已写好，但没有公开 tag 常量，也没有被使用。
-
-- `ModItemTags.bind`
-  - 私有工具方法已写好，但没有公开 tag 常量，也没有被使用。
-
-### 明确未完成或会导致构建失败
-
-- `ModBlockStateProvider.registerStatesAndModels`
-  - 当前包含占位代码：
-    - `???(ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.get(),???);`
-  - 这是 Java 非法语法，当前项目无法编译。
-  - 如果该方块是普通立方体，应改为类似 `simpleBlockWithItem(...)` 的实现，并补充方块纹理。
-
-## 配方与资源状态
-
-### 当前配方目标
-
-`ModRecipesProvider` 生成两个合成配方：
-
-1. `survival_redstone_core`
-   - 石头 + 红石合成核心。
-
-2. `survival_redstone_crafting_table`
-   - 石头 + 任意台阶标签 + `survival_redstone_core` 合成。
-
-### 当前资源情况
-
-已有资源：
-
-- `assets/simple_sr/textures/item/survival_redstone_core.png`
-
-缺少或未生成的关键资源：
-
-- `survival_redstone_crafting_table` 的方块纹理
-- 方块状态 JSON
-- 方块模型 JSON
-- 方块物品模型 JSON
-- 语言 JSON
-- 配方 JSON
-- 战利品表 JSON
-
-这些 JSON 预期由数据生成器生成，但数据生成器当前无法运行，因为项目不能编译。
-
-## 构建与运行确认
-
-我已执行：
-
-```powershell
-.\gradlew.bat build
-```
-
-结果：构建失败。
-
-当前首个阻断错误：
+## 2. 目录结构
 
 ```text
-src/main/java/com/alster/simple_sr/datagen/ModBlockStateProvider.java:16
-错误: 非法的表达式开始
-???(ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.get(),???);
+src/main/java/com/alster/simple_sr/
+├─ block/                 方块定义、交互入口、方块注册
+│  └─ entity/             方块实体、库存、服务端机器逻辑
+├─ menu/                  菜单、槽位、输入输出限制、快速移动
+├─ screen/                客户端 GUI 绘制与鼠标交互
+├─ item/                  物品、方块物品、创造模式标签页
+├─ datagen/               方块状态、模型、语言、配方、战利品表、标签生成
+├─ recipe/                生存红石工作台的自定义配方类型
+├─ level/                 生存红石等级相关逻辑
+├─ tag/                   自定义方块/物品标签
+├─ Config.java            Forge 配置及机器配方配置
+├─ Network.java           自定义网络消息
+├─ ModDataGenerator.java  数据生成入口
+└─ SimpleSR.java          Mod 主入口
 ```
 
-因此当前状态下：
+资源目录：
 
-- 不能完成 `build`
-- 不能确认 `runClient` 可正常启动
-- 不能运行数据生成任务生成资源
+- `src/main/resources/assets/simple_sr/`：手写纹理和固定资源
+- `src/generated/resources/`：通过 `runData` 生成的模型、方块状态、语言、配方、战利品表和标签
 
-在修复编译错误后，建议依次验证：
+不要直接手工修改 `src/generated/resources` 中由数据生成器负责的文件；应修改 Provider 后重新运行 `runData`。
+
+## 3. Mod 启动与注册链路
+
+主入口是 `SimpleSR.java`。构造函数中主要完成：
+
+1. 注册网络消息
+2. 注册方块 `ModBlocks`
+3. 注册方块实体 `ModBlockEntities`
+4. 注册物品 `ModItems`
+5. 注册菜单 `ModMenuTypes`
+6. 注册创造模式标签页 `ModCreativeModeTabs`
+7. 注册 Forge common config
+
+客户端初始化时，`SimpleSR.ClientModEvents` 将菜单类型绑定到对应的 Screen。新增带 GUI 的机器时，通常需要同步修改 Block、BlockEntity、Menu、Screen、注册类、数据生成器、配置和语言文件。
+
+## 4. 当前方块和机器
+
+当前注册的主要方块及对应方块实体为：
+
+- `survival_redstone_crafting_table`：生存红石工作台
+- `iron_farm`：铁农场
+- `slime_tower`：史莱姆塔
+- `cobblestone_farm`：刷石机
+- `furnace_array`：熔炉阵列
+- `rail_farm`：铁轨机
+- `swamp_mob_tower`：沼泽刷怪塔
+- `honey_farm`：蜂蜜农场
+- `villager_breeder`：村民繁殖机
+- `villager_trading_hall`：村民交易所
+- `sand_farm`：刷沙机，仅在末地运行
+- `solidifier`：固化机，仅在末地运行
+- `shulker_farm`：潜影贝农场，首次放置时检查末地城 100 格范围
+- `bamboo_farm`：甘蔗竹子机，默认甘蔗模式，可切换为竹子
+- `packer`：打包机，读取背面材料和顶部容器，将物品装入潜影盒
+
+机器方块通常继承 `BaseEntityBlock`，负责创建方块实体、响应玩家右键和提供服务端 ticker。真正的库存、计时器、产出和 NBT 保存逻辑位于 `block/entity/*BlockEntity.java`。
+
+## 5. 机器逻辑约定
+
+机器逻辑主要在服务端方块实体的 `tick` 中运行，时间单位是 Minecraft tick，20 tick 约等于 1 秒。
+
+- 容器负责库存保存、加载、输入输出和破坏时掉落。
+- 机器应在输出无法完整放入时取消本次产出，避免消耗输入或产生部分结果。
+- 需要原版行为时，优先查询原版 RecipeManager 或战利品表，而不是复制硬编码数据。
+- 临时实体只用于构造战利品表上下文，不能加入世界、生成实体或执行实体 tick。
+- 服务端逻辑不能依赖客户端专属类，例如 `ClientLevel`。
+
+主要机器行为：
+
+- 铁农场：定时读取原版铁傀儡战利品表，不生成真实铁傀儡。
+- 史莱姆塔：模拟尺寸为 1 的史莱姆死亡，并读取 `minecraft:entities/slime` 战利品表。
+- 刷石机：定时产出原石，库存不能完整容纳时取消本次产出。
+- 熔炉阵列：54 个输入槽和 54 个输出槽，使用标准 `RecipeType.SMELTING` 配方，约每 4 tick 处理一个物品，不消耗燃料。
+- 铁轨机：只接受 `minecraft:rails` 标签中的铁轨，开启后定时复制铁轨。
+- 沼泽刷怪塔：只在沼泽生物群系运行，动态读取多种实体的原版战利品表。
+- 蜂蜜农场：定时将玻璃瓶转为蜂蜜瓶，并周期性生成蜜脾；输入和输出两侧独立存储。
+- 村民繁殖机：保存输入物品并提供对应容器界面，具体繁殖逻辑位于其方块实体。
+- 刷沙机：12 个重力方块输入槽和 72 个输出槽，每秒复制输入方块，仅在末地运行。
+- 固化机：54 个输入槽和 54 个输出槽，每秒将最多 20 个混凝土粉末转为对应颜色混凝土，仅在末地运行。
+- 潜影贝农场：54 槽大型箱子，每 5 秒读取潜影贝战利品表，仅在末地维度运行。
+- 甘蔗竹子机：54 槽大型箱子，默认每 30 秒产出 1 个甘蔗，顶部按钮可切换为竹子；输出空间不足时取消本次产出。
+- 打包机：27 个物品槽，背面读取 2 个潜影壳和 1 个箱子，顶面按漏斗规则取物，并以 3 倍漏斗速度装入潜影盒。
+
+## 6. 生存红石工作台
+
+生存红石工作台不是原版工作台的扩展，而是一个配置驱动的自定义机器配方系统。
+
+核心文件：
+
+- `Config.java`
+- `recipe/SurvivalRedstoneRecipe.java`
+- `menu/SurvivalRedstoneCraftingTableMenu.java`
+- `screen/SurvivalRedstoneCraftingTableScreen.java`
+
+机器配方应添加到 `Config.SURVIVAL_REDSTONE_RECIPES`。每个配方是包含以下字段的 JSON 字符串：
+
+- `id`
+- `name_key`
+- `level`
+- `ingredients`
+- `result`
+
+新增机器时除了增加默认配方，还要考虑旧版配置迁移，以及中英文配方名称翻译。
+
+## 7. 村民交易所
+
+村民交易所不保存真实村民实体，而是保存最多 50 个模拟村民记录。每条记录包含：
+
+- 名称
+- 职业
+- `MerchantOffers`
+- 经验
+- 交易等级
+
+交易生成使用临时 Villager 调用原版 `updateTrades()`，从而尽量兼容原版和其他 Mod 对村民交易表的修改。
+
+数据链路分为三部分：
+
+1. 服务端方块实体保存真实村民数据并执行交易。
+2. 打开菜单时向客户端传递数据快照。
+3. 客户端 GUI 使用菜单快照显示列表，改名、提交、同步等操作通过 `Network.java` 发回服务端。
+
+服务端交易逻辑不能使用客户端快照；客户端按钮的可用状态也必须在服务端再次校验。
+
+放置带数据的交易所物品时，`VillagerTradingHallBlock.setPlacedBy` 必须恢复 `BlockEntityTag`，否则物品提示有数据但新方块实体可能为空。
+
+## 8. 菜单和 GUI 约定
+
+菜单负责槽位布局和物品移动，Screen 负责绘制。新增输入输出容器时，槽位应保持以下顺序：
+
+1. 全部输入槽
+2. 全部输出槽
+3. 玩家背包槽
+
+同时明确 `INPUT_START`、`OUTPUT_START`、`PLAYER_START` 等常量，并保证它们与 `quickMoveStack` 的范围一致。
+
+GUI 覆盖层、确认框和弹窗应使用较高的 Z 层级绘制，例如先 push pose，再平移到较高 Z，最后恢复 pose。已经由 `super.render` 绘制的 widget 不应在 `render` 中再次手动绘制。
+
+## 9. 数据生成和资源
+
+数据生成入口是 `ModDataGenerator.gatherData`，当前包含配方、战利品表、方块标签、物品标签、方块状态、方块模型、物品模型和中英文语言 Provider。
+
+新增机器通常需要：
+
+- 正面和侧面纹理：`assets/simple_sr/textures/block/`
+- BlockState Provider
+- Block 模型和 BlockItem 模型
+- `dropSelf` 战利品表
+- 方块标签，尤其是挖掘工具和挖掘等级
+- 中英文翻译
+- 配置配方
+
+运行：
 
 ```powershell
-.\gradlew.bat build
-.\gradlew.bat runData
-.\gradlew.bat runClient
+.\gradlew.bat runData --no-daemon
 ```
 
-## 对模组任务内容的理解
+如果模型引用的纹理不存在，数据生成阶段会报资源缺失错误。
 
-该模组当前处于早期骨架阶段。它想要围绕“生存红石”做一套更方便、更紧凑的红石辅助系统。
+## 10. 修改后的推荐验证流程
 
-目前已经落地的第一步是：
+```powershell
+.\gradlew.bat compileJava --no-daemon
+.\gradlew.bat runData --no-daemon
+.\gradlew.bat build --no-daemon
+```
 
-- 定义一个基础材料：`Survival Redstone Core`
-- 定义一个核心工作方块：`Survival Redstone Crafting Table`
-- 将它们加入自定义创造标签页
-- 为它们准备配方、语言、模型、战利品表等数据生成框架
+游戏内至少验证：
 
-下一阶段合理任务应包括：
+1. 创造模式标签页和生存红石工作台能看到新增机器。
+2. 新旧配置都能正常加载。
+3. 输入槽能拒绝错误物品。
+4. 输出空间不足时不会错误消耗输入。
+5. 破坏机器时所有库存都能掉落。
+6. 机器运行条件和 GUI 状态一致。
+7. 手动取出、Shift 点击、漏斗输入输出符合设计。
+8. 原版或其他 Mod 修改的配方、战利品表仍能被查询到。
 
-- 修复当前编译错误
-- 补齐方块状态、模型和纹理
-- 修复中文语言文件编码和内容
-- 统一模组 ID 元数据
-- 明确 `survival_redstone_crafting_table` 的实际玩法职责
-- 如果它是特殊工作台，需要实现菜单、容器、屏幕、交互逻辑
-- 如果它是红石机器，需要实现方块状态、红石输入/输出、tick 或邻居更新逻辑
+## 11. 当前文档状态说明
 
-## 建议优先级
+旧版理解文档记录过早期的单方块模板状态和 `ModBlockStateProvider` 占位符编译错误。当前源码已经包含完整的多机器架构和生成资源，因此旧版内容不能作为当前实现状态依据。本文件以当前源码和交接文档为准；具体功能细节继续参考：
 
-1. 修复 `ModBlockStateProvider` 的占位代码。
-2. 修复 `ModZhCnLangProvider` 的字符串和编码。
-3. 将 `gradle.properties` 的 `mod_id` 改为 `simple_sr`。
-4. 补充 `survival_redstone_crafting_table` 的方块纹理。
-5. 运行 `build` 和 `runData`，生成并检查资源。
-6. 再开始实现真正的机器/红石/GUI 功能。
-
+- `CODEX_PROJECT_HANDOFF.md`
+- `VILLAGER_TRADING_HALL_HANDOFF.md`

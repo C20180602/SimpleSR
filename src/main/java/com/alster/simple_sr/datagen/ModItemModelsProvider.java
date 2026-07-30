@@ -28,6 +28,16 @@ public class ModItemModelsProvider extends ItemModelProvider {
                 modLoc("block/furnace_array"));
         withExistingParent(ModBlocks.RAIL_FARM.getId().getPath(),
                 modLoc("block/rail_farm"));
+        withExistingParent(ModBlocks.SAND_FARM.getId().getPath(),
+                modLoc("block/sand_farm"));
+        withExistingParent(ModBlocks.SOLIDIFIER.getId().getPath(),
+                modLoc("block/solidifier"));
+        withExistingParent(ModBlocks.SHULKER_FARM.getId().getPath(),
+                modLoc("block/shulker_farm"));
+        withExistingParent(ModBlocks.BAMBOO_FARM.getId().getPath(),
+                modLoc("block/bamboo_farm"));
+        withExistingParent(ModBlocks.PACKER.getId().getPath(),
+                modLoc("block/packer"));
         withExistingParent(ModBlocks.SWAMP_MOB_TOWER.getId().getPath(),
                 modLoc("block/swamp_mob_tower"));
         withExistingParent(ModBlocks.HONEY_FARM.getId().getPath(),

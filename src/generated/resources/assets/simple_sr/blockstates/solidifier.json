@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "simple_sr:block/solidifier",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "simple_sr:block/solidifier"
+    },
+    "facing=south": {
+      "model": "simple_sr:block/solidifier",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "simple_sr:block/solidifier",
+      "y": 270
+    }
+  }
+}

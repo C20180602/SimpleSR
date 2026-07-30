@@ -30,11 +30,15 @@ public record SurvivalRedstoneRecipe(String id, String nameKey, int level, List<
 
     public record IngredientCount(Ingredient ingredient, int count) {
         public ItemStack stack() {
+            return stackAt(0);
+        }
+
+        public ItemStack stackAt(long index) {
             ItemStack[] matchingStacks = ingredient.getItems();
             if (matchingStacks.length == 0) {
                 return ItemStack.EMPTY;
             }
-            ItemStack displayStack = matchingStacks[0].copy();
+            ItemStack displayStack = matchingStacks[(int) Math.floorMod(index, matchingStacks.length)].copy();
             displayStack.setCount(Math.min(count, displayStack.getMaxStackSize()));
             return displayStack;
         }

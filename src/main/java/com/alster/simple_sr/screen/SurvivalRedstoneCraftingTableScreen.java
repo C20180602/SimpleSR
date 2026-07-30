@@ -2,13 +2,12 @@ package com.alster.simple_sr.screen;
 
 import com.alster.simple_sr.menu.SurvivalRedstoneCraftingTableMenu;
 import com.alster.simple_sr.recipe.SurvivalRedstoneRecipe;
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
@@ -63,6 +62,7 @@ public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen
         renderGhostIngredients(graphics);
         renderScaledStackCounts(graphics);
         renderRecipeCounts(graphics);
+        renderGhostTooltips(graphics, mouseX, mouseY);
         renderTooltip(graphics, mouseX, mouseY);
     }
 
@@ -152,12 +152,25 @@ public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen
             SurvivalRedstoneRecipe.IngredientCount ingredient = recipe.ingredients().get(i);
             if (menu.countStored(ingredient) <= 0) {
                 Slot slot = menu.slots.get(i);
-                RenderSystem.setShader(GameRenderer::getPositionTexShader);
-                RenderSystem.enableBlend();
-                RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 0.5F);
-                graphics.renderItem(ingredient.stack(), leftPos + slot.x, topPos + slot.y);
-                RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                RenderSystem.disableBlend();
+                long cycle = minecraft != null && minecraft.level != null ? minecraft.level.getGameTime() / 20L : 0L;
+                graphics.setColor(1.0F, 1.0F, 1.0F, 0.5F);
+                graphics.renderItem(ingredient.stackAt(cycle), leftPos + slot.x, topPos + slot.y);
+                graphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
+            }
+        }
+    }
+
+    private void renderGhostTooltips(GuiGraphics graphics, int mouseX, int mouseY) {
+        SurvivalRedstoneRecipe recipe = menu.getSelectedRecipe();
+        if (recipe == null) return;
+        long cycle = minecraft != null && minecraft.level != null ? minecraft.level.getGameTime() / 20L : 0L;
+        for (int i = 0; i < recipe.ingredients().size() && i < SurvivalRedstoneCraftingTableMenu.INPUT_SLOT_COUNT; i++) {
+            SurvivalRedstoneRecipe.IngredientCount ingredient = recipe.ingredients().get(i);
+            Slot slot = menu.slots.get(i);
+            if (!slot.hasItem() && menu.countStored(ingredient) <= 0 && isHovering(slot.x, slot.y, 16, 16, mouseX, mouseY)) {
+                ItemStack displayStack = ingredient.stackAt(cycle);
+                if (!displayStack.isEmpty()) graphics.renderTooltip(font, displayStack, mouseX, mouseY);
+                return;
             }
         }
     }

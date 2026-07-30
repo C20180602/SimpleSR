@@ -28,6 +28,21 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<RailFarmMenu>> RAIL_FARM_MENU =
             registerMenuType("rail_farm", RailFarmMenu::fromNetwork);
 
+    public static final RegistryObject<MenuType<SandFarmMenu>> SAND_FARM_MENU =
+            registerMenuType("sand_farm", SandFarmMenu::fromNetwork);
+
+    public static final RegistryObject<MenuType<SolidifierMenu>> SOLIDIFIER_MENU =
+            registerMenuType("solidifier", SolidifierMenu::fromNetwork);
+
+    public static final RegistryObject<MenuType<ShulkerFarmMenu>> SHULKER_FARM_MENU =
+            registerMenuType("shulker_farm", ShulkerFarmMenu::fromNetwork);
+
+    public static final RegistryObject<MenuType<BambooFarmMenu>> BAMBOO_FARM_MENU =
+            registerMenuType("bamboo_farm", BambooFarmMenu::fromNetwork);
+
+    public static final RegistryObject<MenuType<PackerMenu>> PACKER_MENU =
+            registerMenuType("packer", PackerMenu::fromNetwork);
+
     public static final RegistryObject<MenuType<SwampMobTowerMenu>> SWAMP_MOB_TOWER_MENU =
             registerMenuType("swamp_mob_tower", SwampMobTowerMenu::fromNetwork);
 

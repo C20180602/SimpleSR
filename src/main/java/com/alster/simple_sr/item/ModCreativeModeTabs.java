@@ -26,6 +26,11 @@ public class ModCreativeModeTabs {
                     output.accept(ModBlocks.COBBLESTONE_FARM.get());
                     output.accept(ModBlocks.FURNACE_ARRAY.get());
                     output.accept(ModBlocks.RAIL_FARM.get());
+                    output.accept(ModBlocks.SAND_FARM.get());
+                    output.accept(ModBlocks.SOLIDIFIER.get());
+                    output.accept(ModBlocks.SHULKER_FARM.get());
+                    output.accept(ModBlocks.BAMBOO_FARM.get());
+                    output.accept(ModBlocks.PACKER.get());
                     output.accept(ModBlocks.SWAMP_MOB_TOWER.get());
                     output.accept(ModBlocks.HONEY_FARM.get());
                     output.accept(ModBlocks.VILLAGER_BREEDER.get());

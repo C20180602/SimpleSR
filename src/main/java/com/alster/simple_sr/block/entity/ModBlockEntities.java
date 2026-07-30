@@ -42,6 +42,31 @@ public class ModBlockEntities {
                     () -> BlockEntityType.Builder.of(RailFarmBlockEntity::new,
                             ModBlocks.RAIL_FARM.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<SandFarmBlockEntity>> SAND_FARM_BE =
+            BLOCK_ENTITIES.register("sand_farm",
+                    () -> BlockEntityType.Builder.of(SandFarmBlockEntity::new,
+                            ModBlocks.SAND_FARM.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<SolidifierBlockEntity>> SOLIDIFIER_BE =
+            BLOCK_ENTITIES.register("solidifier",
+                    () -> BlockEntityType.Builder.of(SolidifierBlockEntity::new,
+                            ModBlocks.SOLIDIFIER.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<ShulkerFarmBlockEntity>> SHULKER_FARM_BE =
+            BLOCK_ENTITIES.register("shulker_farm",
+                    () -> BlockEntityType.Builder.of(ShulkerFarmBlockEntity::new,
+                            ModBlocks.SHULKER_FARM.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<BambooFarmBlockEntity>> BAMBOO_FARM_BE =
+            BLOCK_ENTITIES.register("bamboo_farm",
+                    () -> BlockEntityType.Builder.of(BambooFarmBlockEntity::new,
+                            ModBlocks.BAMBOO_FARM.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<PackerBlockEntity>> PACKER_BE =
+            BLOCK_ENTITIES.register("packer",
+                    () -> BlockEntityType.Builder.of(PackerBlockEntity::new,
+                            ModBlocks.PACKER.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<SwampMobTowerBlockEntity>> SWAMP_MOB_TOWER_BE =
             BLOCK_ENTITIES.register("swamp_mob_tower",
                     () -> BlockEntityType.Builder.of(SwampMobTowerBlockEntity::new,
