@@ -18,8 +18,10 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add(ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.get(), "Survival Redstone Crafting Table");
         add(ModBlocks.IRON_FARM.get(), "Iron Farm");
         add(ModBlocks.SLIME_TOWER.get(), "Slime Tower");
+        add(ModBlocks.ENDERMAN_TOWER.get(), "Enderman Tower");
         add(ModBlocks.COBBLESTONE_FARM.get(), "Cobblestone Farm");
         add(ModBlocks.FURNACE_ARRAY.get(), "50x Furnace Array");
+        add(ModBlocks.TREE_FARM.get(), "Tree Farm");
         add(ModBlocks.RAIL_FARM.get(), "Rail Farm");
         add(ModBlocks.SAND_FARM.get(), "Sand Farm");
         add(ModBlocks.SOLIDIFIER.get(), "Solidifier");
@@ -35,8 +37,11 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("container.simple_sr.survival_redstone_crafting_table", "Survival Redstone Crafting Table");
         add("container.simple_sr.iron_farm", "Iron Farm");
         add("container.simple_sr.slime_tower", "Slime Tower");
+        add("container.simple_sr.enderman_tower", "Enderman Tower");
+        add("hint.simple_sr.enderman_tower.attack", "Right-click with a sword to simulate attacks");
         add("container.simple_sr.cobblestone_farm", "Cobblestone Farm");
         add("container.simple_sr.furnace_array", "50x Furnace Array");
+        add("container.simple_sr.tree_farm", "Tree Farm");
         add("container.simple_sr.rail_farm", "Rail Farm");
         add("container.simple_sr.sand_farm", "Sand Farm");
         add("container.simple_sr.solidifier", "Solidifier");
@@ -47,6 +52,8 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("container.simple_sr.honey_farm", "Honey Farm");
         add("status.simple_sr.slime_tower.running", "Running");
         add("status.simple_sr.slime_tower.not_running", "Not a slime chunk");
+        add("status.simple_sr.enderman_tower.running", "Running");
+        add("status.simple_sr.enderman_tower.not_running", "Not in the End dimension, not running");
         add("container.simple_sr.villager_breeder", "Villager Breeder");
         add("container.simple_sr.villager_trading_hall", "Villager Trading Hall");
         add("status.simple_sr.swamp_mob_tower.running", "Running");
@@ -59,8 +66,13 @@ public class ModEnUsLangProvider extends LanguageProvider {
         add("recipe.simple_sr.villager_trading_hall", "Villager Trading Hall");
         add("recipe.simple_sr.iron_farm", "Iron Farm");
         add("recipe.simple_sr.slime_tower", "Slime Tower");
+        add("recipe.simple_sr.enderman_tower", "Enderman Tower");
         add("recipe.simple_sr.cobblestone_farm", "Cobblestone Farm");
         add("recipe.simple_sr.furnace_array", "50x Furnace Array");
+        add("recipe.simple_sr.tree_farm", "Tree Farm");
+        add("screen.simple_sr.tree_farm.input", "Input Chest");
+        add("screen.simple_sr.tree_farm.output", "Output Chest");
+        add("hint.simple_sr.tree_farm.input", "Put bone meal and saplings in the left chest");
         add("recipe.simple_sr.rail_farm", "Rail Farm");
         add("recipe.simple_sr.sand_farm", "Sand Farm");
         add("recipe.simple_sr.solidifier", "Solidifier");

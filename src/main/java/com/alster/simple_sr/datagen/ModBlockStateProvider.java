@@ -48,6 +48,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ).texture("particle", modLoc("block/slime_tower_side")));
         simpleBlockItem(ModBlocks.SLIME_TOWER.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/slime_tower")));
 
+        horizontalBlock(ModBlocks.ENDERMAN_TOWER.get(), models().cube(
+                "enderman_tower",
+                modLoc("block/enderman_tower_side"), modLoc("block/enderman_tower_side"),
+                modLoc("block/enderman_tower_front"), modLoc("block/enderman_tower_side"),
+                modLoc("block/enderman_tower_side"), modLoc("block/enderman_tower_side")
+        ).texture("particle", modLoc("block/enderman_tower_side")));
+        simpleBlockItem(ModBlocks.ENDERMAN_TOWER.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/enderman_tower")));
+
         horizontalBlock(ModBlocks.COBBLESTONE_FARM.get(), models().cube(
                 "cobblestone_farm",
                 modLoc("block/cobblestone_farm_side"), modLoc("block/cobblestone_farm_side"),
@@ -63,6 +71,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 modLoc("block/furnace_array_side"), modLoc("block/furnace_array_side")
         ).texture("particle", modLoc("block/furnace_array_side")));
         simpleBlockItem(ModBlocks.FURNACE_ARRAY.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/furnace_array")));
+
+        horizontalBlock(ModBlocks.TREE_FARM.get(), models().cube(
+                "tree_farm",
+                modLoc("block/tree_farm_side"), modLoc("block/tree_farm_side"),
+                modLoc("block/tree_farm_front"), modLoc("block/tree_farm_side"),
+                modLoc("block/tree_farm_side"), modLoc("block/tree_farm_side")
+        ).texture("particle", modLoc("block/tree_farm_side")));
+        simpleBlockItem(ModBlocks.TREE_FARM.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/tree_farm")));
 
         horizontalBlock(ModBlocks.RAIL_FARM.get(), models().cube(
                 "rail_farm",

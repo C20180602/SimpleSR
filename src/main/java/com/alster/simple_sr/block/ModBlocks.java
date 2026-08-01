@@ -30,6 +30,10 @@ public class ModBlocks {
             = registerBlock("slime_tower",
             () -> new SlimeTowerBlock(machineProperties()));
 
+    public static final RegistryObject<Block> ENDERMAN_TOWER
+            = registerBlock("enderman_tower",
+            () -> new EndermanTowerBlock(machineProperties()));
+
     public static final RegistryObject<Block> COBBLESTONE_FARM
             = registerBlock("cobblestone_farm",
             () -> new CobblestoneFarmBlock(machineProperties()));
@@ -37,6 +41,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> FURNACE_ARRAY
             = registerBlock("furnace_array",
             () -> new FurnaceArrayBlock(machineProperties()));
+
+    public static final RegistryObject<Block> TREE_FARM
+            = registerBlock("tree_farm",
+            () -> new TreeFarmBlock(machineProperties()));
 
     public static final RegistryObject<Block> RAIL_FARM
             = registerBlock("rail_farm",

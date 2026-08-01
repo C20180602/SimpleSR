@@ -27,6 +27,11 @@ public class ModBlockEntities {
                     () -> BlockEntityType.Builder.of(SlimeTowerBlockEntity::new,
                             ModBlocks.SLIME_TOWER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<EndermanTowerBlockEntity>> ENDERMAN_TOWER_BE =
+            BLOCK_ENTITIES.register("enderman_tower",
+                    () -> BlockEntityType.Builder.of(EndermanTowerBlockEntity::new,
+                            ModBlocks.ENDERMAN_TOWER.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<CobblestoneFarmBlockEntity>> COBBLESTONE_FARM_BE =
             BLOCK_ENTITIES.register("cobblestone_farm",
                     () -> BlockEntityType.Builder.of(CobblestoneFarmBlockEntity::new,
@@ -36,6 +41,11 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("furnace_array",
                     () -> BlockEntityType.Builder.of(FurnaceArrayBlockEntity::new,
                             ModBlocks.FURNACE_ARRAY.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<TreeFarmBlockEntity>> TREE_FARM_BE =
+            BLOCK_ENTITIES.register("tree_farm",
+                    () -> BlockEntityType.Builder.of(TreeFarmBlockEntity::new,
+                            ModBlocks.TREE_FARM.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<RailFarmBlockEntity>> RAIL_FARM_BE =
             BLOCK_ENTITIES.register("rail_farm",

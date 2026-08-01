@@ -23,8 +23,10 @@ public class ModCreativeModeTabs {
                     output.accept(ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.get());
                     output.accept(ModBlocks.IRON_FARM.get());
                     output.accept(ModBlocks.SLIME_TOWER.get());
+                    output.accept(ModBlocks.ENDERMAN_TOWER.get());
                     output.accept(ModBlocks.COBBLESTONE_FARM.get());
                     output.accept(ModBlocks.FURNACE_ARRAY.get());
+                    output.accept(ModBlocks.TREE_FARM.get());
                     output.accept(ModBlocks.RAIL_FARM.get());
                     output.accept(ModBlocks.SAND_FARM.get());
                     output.accept(ModBlocks.SOLIDIFIER.get());

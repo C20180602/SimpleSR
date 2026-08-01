@@ -17,8 +17,10 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add(ModBlocks.SURVIVAL_REDSTONE_CRAFTING_TABLE.get(), "\u751f\u7535\u5de5\u4f5c\u53f0");
         add(ModBlocks.IRON_FARM.get(), "\u5237\u94c1\u673a");
         add(ModBlocks.SLIME_TOWER.get(), "\u53f2\u83b1\u59c6\u5237\u602a\u5854");
+        add(ModBlocks.ENDERMAN_TOWER.get(), "\u5c0f\u9ed1\u5854");
         add(ModBlocks.COBBLESTONE_FARM.get(), "\u5237\u77f3\u673a");
         add(ModBlocks.FURNACE_ARRAY.get(), "50\u500d\u901f\u7194\u7089\u7ec4");
+        add(ModBlocks.TREE_FARM.get(), "\u6811\u573a");
         add(ModBlocks.RAIL_FARM.get(), "\u5237\u94c1\u8f68\u673a");
         add(ModBlocks.SAND_FARM.get(), "\u5237\u6c99\u673a");
         add(ModBlocks.SOLIDIFIER.get(), "\u56fa\u5316\u673a");
@@ -32,8 +34,11 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("itemGroup.simple_sr_tab", "\u7b80\u6613\u751f\u7535");
         add("container.simple_sr.iron_farm", "\u5237\u94c1\u673a");
         add("container.simple_sr.slime_tower", "\u53f2\u83b1\u59c6\u5237\u602a\u5854");
+        add("container.simple_sr.enderman_tower", "\u5c0f\u9ed1\u5854");
+        add("hint.simple_sr.enderman_tower.attack", "\u4f7f\u7528\u5251\u53f3\u952e\u6a21\u62df\u653b\u51fb");
         add("container.simple_sr.cobblestone_farm", "\u5237\u77f3\u673a");
         add("container.simple_sr.furnace_array", "50\u500d\u901f\u7194\u7089\u7ec4");
+        add("container.simple_sr.tree_farm", "\u6811\u573a");
         add("container.simple_sr.rail_farm", "\u5237\u94c1\u8f68\u673a");
         add("container.simple_sr.sand_farm", "\u5237\u6c99\u673a");
         add("container.simple_sr.solidifier", "\u56fa\u5316\u673a");
@@ -44,6 +49,8 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("container.simple_sr.honey_farm", "\u871c\u8702\u519c\u573a");
         add("status.simple_sr.slime_tower.running", "\u6b63\u5e38\u8fd0\u884c");
         add("status.simple_sr.slime_tower.not_running", "\u975e\u53f2\u83b1\u59c6\u533a\u5757\uff0c\u4e0d\u8fd0\u884c");
+        add("status.simple_sr.enderman_tower.running", "\u6b63\u5e38\u8fd0\u884c");
+        add("status.simple_sr.enderman_tower.not_running", "\u975e\u672b\u5730\u7ef4\u5ea6\uff0c\u4e0d\u8fd0\u884c");
         add("container.simple_sr.villager_breeder", "\u6751\u6c11\u7e41\u6b96\u673a");
         add("container.simple_sr.villager_trading_hall", "\u6751\u6c11\u4ea4\u6613\u6240");
         add("status.simple_sr.swamp_mob_tower.running", "\u6b63\u5e38\u8fd0\u884c");
@@ -57,8 +64,13 @@ public class ModZhCnLangProvider extends LanguageProvider {
         add("recipe.simple_sr.iron_farm", "\u5237\u94c1\u673a");
         add("recipe.simple_sr.villager_breeder", "\u6751\u6c11\u7e41\u6b96\u673a");
         add("recipe.simple_sr.slime_tower", "\u53f2\u83b1\u59c6\u5237\u602a\u5854");
+        add("recipe.simple_sr.enderman_tower", "\u5c0f\u9ed1\u5854");
         add("recipe.simple_sr.cobblestone_farm", "\u5237\u77f3\u673a");
         add("recipe.simple_sr.furnace_array", "50\u500d\u901f\u7194\u7089\u7ec4");
+        add("recipe.simple_sr.tree_farm", "\u6811\u573a");
+        add("screen.simple_sr.tree_farm.input", "\u8f93\u5165\u7bb1");
+        add("screen.simple_sr.tree_farm.output", "\u8f93\u51fa\u7bb1");
+        add("hint.simple_sr.tree_farm.input", "\u5728\u5de6\u4fa7\u7bb1\u4e2d\u653e\u5165\u9aa8\u7c89\u4e0e\u6811\u82d7");
         add("recipe.simple_sr.rail_farm", "\u5237\u94c1\u8f68\u673a");
         add("recipe.simple_sr.sand_farm", "\u5237\u6c99\u673a");
         add("recipe.simple_sr.solidifier", "\u56fa\u5316\u673a");

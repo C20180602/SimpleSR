@@ -22,8 +22,14 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<SlimeTowerMenu>> SLIME_TOWER_MENU =
             registerMenuType("slime_tower", SlimeTowerMenu::fromNetwork);
 
+    public static final RegistryObject<MenuType<EndermanTowerMenu>> ENDERMAN_TOWER_MENU =
+            registerMenuType("enderman_tower", EndermanTowerMenu::fromNetwork);
+
     public static final RegistryObject<MenuType<FurnaceArrayMenu>> FURNACE_ARRAY_MENU =
             registerMenuType("furnace_array", FurnaceArrayMenu::fromNetwork);
+
+    public static final RegistryObject<MenuType<TreeFarmMenu>> TREE_FARM_MENU =
+            registerMenuType("tree_farm", TreeFarmMenu::fromNetwork);
 
     public static final RegistryObject<MenuType<RailFarmMenu>> RAIL_FARM_MENU =
             registerMenuType("rail_farm", RailFarmMenu::fromNetwork);
