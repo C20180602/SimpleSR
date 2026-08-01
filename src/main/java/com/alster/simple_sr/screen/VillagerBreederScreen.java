@@ -7,7 +7,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class VillagerBreederScreen extends AbstractContainerScreen<VillagerBreederMenu> {
+public class VillagerBreederScreen extends TooltipContainerScreen<VillagerBreederMenu> {
     private static final int BACKGROUND = 0xFFC6C6C6;
     private static final int PANEL_DARK = 0xFF8B8B8B;
     private static final int PANEL_LIGHT = 0xFFFFFFFF;
@@ -22,6 +22,7 @@ public class VillagerBreederScreen extends AbstractContainerScreen<VillagerBreed
         imageWidth = 176;
         imageHeight = 166;
     }
+    @Override public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) { super.render(graphics, mouseX, mouseY, partialTick); renderTooltip(graphics, mouseX, mouseY); }
 
     @Override
     protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {

@@ -24,6 +24,12 @@ public class ModCreativeModeTabs {
                     output.accept(ModBlocks.IRON_FARM.get());
                     output.accept(ModBlocks.SLIME_TOWER.get());
                     output.accept(ModBlocks.ENDERMAN_TOWER.get());
+                    output.accept(ModBlocks.ZOMBIFIED_PIGLIN_TOWER.get());
+                    output.accept(ModBlocks.PIGLIN_TRADING_TOWER.get());
+                    output.accept(ModBlocks.HOGLIN_FARM.get());
+                    output.accept(ModBlocks.RAID_TOWER.get());
+                    output.accept(ModBlocks.GUARDIAN_FARM.get());
+                    output.accept(ModBlocks.WITHER_SKELETON_FARM.get());
                     output.accept(ModBlocks.COBBLESTONE_FARM.get());
                     output.accept(ModBlocks.FURNACE_ARRAY.get());
                     output.accept(ModBlocks.TREE_FARM.get());

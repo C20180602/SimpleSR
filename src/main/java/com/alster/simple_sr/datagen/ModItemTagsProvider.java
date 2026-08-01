@@ -4,7 +4,10 @@ import com.alster.simple_sr.SimpleSR;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,6 +20,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-
+        tag(ItemTags.create(new ResourceLocation(SimpleSR.MODID, "dead_coral_fans")))
+                .add(Items.DEAD_TUBE_CORAL_FAN)
+                .add(Items.DEAD_BRAIN_CORAL_FAN)
+                .add(Items.DEAD_BUBBLE_CORAL_FAN)
+                .add(Items.DEAD_FIRE_CORAL_FAN)
+                .add(Items.DEAD_HORN_CORAL_FAN);
     }
 }

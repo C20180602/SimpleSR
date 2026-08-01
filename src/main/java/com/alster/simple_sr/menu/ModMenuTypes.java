@@ -25,6 +25,24 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<EndermanTowerMenu>> ENDERMAN_TOWER_MENU =
             registerMenuType("enderman_tower", EndermanTowerMenu::fromNetwork);
 
+    public static final RegistryObject<MenuType<ZombifiedPiglinTowerMenu>> ZOMBIFIED_PIGLIN_TOWER_MENU =
+            registerMenuType("zombified_piglin_tower", ZombifiedPiglinTowerMenu::fromNetwork);
+
+    public static final RegistryObject<MenuType<PiglinTradingTowerMenu>> PIGLIN_TRADING_TOWER_MENU =
+            registerMenuType("piglin_trading_tower", PiglinTradingTowerMenu::fromNetwork);
+
+    public static final RegistryObject<MenuType<HoglinFarmMenu>> HOGLIN_FARM_MENU =
+            registerMenuType("hoglin_farm", HoglinFarmMenu::fromNetwork);
+
+    public static final RegistryObject<MenuType<RaidTowerMenu>> RAID_TOWER_MENU =
+            registerMenuType("raid_tower", RaidTowerMenu::fromNetwork);
+
+    public static final RegistryObject<MenuType<GuardianFarmMenu>> GUARDIAN_FARM_MENU =
+            registerMenuType("guardian_farm", GuardianFarmMenu::fromNetwork);
+
+    public static final RegistryObject<MenuType<WitherSkeletonFarmMenu>> WITHER_SKELETON_FARM_MENU =
+            registerMenuType("wither_skeleton_farm", WitherSkeletonFarmMenu::fromNetwork);
+
     public static final RegistryObject<MenuType<FurnaceArrayMenu>> FURNACE_ARRAY_MENU =
             registerMenuType("furnace_array", FurnaceArrayMenu::fromNetwork);
 

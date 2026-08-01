@@ -7,7 +7,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class RailFarmScreen extends AbstractContainerScreen<RailFarmMenu> {
+public class RailFarmScreen extends TooltipContainerScreen<RailFarmMenu> {
     private Button toggleButton;
     public RailFarmScreen(RailFarmMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
@@ -25,6 +25,7 @@ public class RailFarmScreen extends AbstractContainerScreen<RailFarmMenu> {
             toggleButton.active = menu.hasInput();
         }
         super.render(graphics, mouseX, mouseY, partialTick);
+        renderTooltip(graphics, mouseX, mouseY);
     }
     @Override protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
         graphics.fill(leftPos, topPos, leftPos + imageWidth, topPos + imageHeight, 0xFFC6C6C6);

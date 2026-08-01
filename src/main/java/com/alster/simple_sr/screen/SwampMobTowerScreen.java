@@ -6,10 +6,11 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class SwampMobTowerScreen extends AbstractContainerScreen<SwampMobTowerMenu> {
+public class SwampMobTowerScreen extends TooltipContainerScreen<SwampMobTowerMenu> {
     public SwampMobTowerScreen(SwampMobTowerMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title); imageWidth = 256; imageHeight = 222; inventoryLabelX = 8; inventoryLabelY = 128;
     }
+    @Override public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) { super.render(graphics, mouseX, mouseY, partialTick); renderTooltip(graphics, mouseX, mouseY); }
     @Override protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
         graphics.fill(leftPos, topPos, leftPos + imageWidth, topPos + imageHeight, 0xFFC6C6C6);
         drawPanel(graphics, leftPos + 4, topPos + 14, 166, 112);

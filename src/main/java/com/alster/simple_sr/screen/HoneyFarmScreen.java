@@ -6,8 +6,9 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class HoneyFarmScreen extends AbstractContainerScreen<HoneyFarmMenu> {
+public class HoneyFarmScreen extends TooltipContainerScreen<HoneyFarmMenu> {
     public HoneyFarmScreen(HoneyFarmMenu menu, Inventory inventory, Component title) { super(menu, inventory, title); imageWidth = 370; imageHeight = 222; inventoryLabelX = 104; inventoryLabelY = 128; }
+    @Override public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) { super.render(graphics, mouseX, mouseY, partialTick); renderTooltip(graphics, mouseX, mouseY); }
     @Override protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
         graphics.fill(leftPos, topPos, leftPos + imageWidth, topPos + imageHeight, 0xFFC6C6C6);
         drawPanel(graphics, leftPos + 4, topPos + 14, 166, 112); drawPanel(graphics, leftPos + 186, topPos + 14, 166, 112);

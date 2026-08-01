@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "simple_sr:block/zombified_piglin_tower_side",
+    "east": "simple_sr:block/zombified_piglin_tower_side",
+    "north": "simple_sr:block/zombified_piglin_tower_front",
+    "particle": "simple_sr:block/zombified_piglin_tower_side",
+    "south": "simple_sr:block/zombified_piglin_tower_side",
+    "up": "simple_sr:block/zombified_piglin_tower_side",
+    "west": "simple_sr:block/zombified_piglin_tower_side"
+  }
+}

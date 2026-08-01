@@ -25,6 +25,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -109,6 +111,7 @@ public class VillagerTradingHallBlockEntity extends BlockEntity implements Conta
         int previousLevel = record.level;
         while (record.level < 5 && record.xp >= levelThreshold(record.level + 1)) record.level++;
         for (int level = previousLevel + 1; level <= record.level; level++) appendOffers(record, level);
+        if (level instanceof net.minecraft.server.level.ServerLevel serverLevel) serverLevel.playSound(null, worldPosition.above(), SoundEvents.VILLAGER_YES, SoundSource.NEUTRAL, 1.0F, 1.0F);
         if (level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
             net.minecraft.core.Direction front = getBlockState().getValue(VillagerTradingHallBlock.FACING);
             ExperienceOrb.award(serverLevel, net.minecraft.world.phys.Vec3.atCenterOf(worldPosition).add(front.getStepX() * .55D, 0, front.getStepZ() * .55D), offer.getXp());

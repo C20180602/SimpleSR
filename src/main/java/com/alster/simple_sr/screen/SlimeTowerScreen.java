@@ -9,13 +9,14 @@ import net.minecraft.world.level.levelgen.LegacyRandomSource;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class SlimeTowerScreen extends AbstractContainerScreen<SlimeTowerMenu> {
+public class SlimeTowerScreen extends TooltipContainerScreen<SlimeTowerMenu> {
     public SlimeTowerScreen(SlimeTowerMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
         imageWidth = 256;
         imageHeight = 222;
         inventoryLabelY = 128;
     }
+    @Override public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) { super.render(graphics, mouseX, mouseY, partialTick); renderTooltip(graphics, mouseX, mouseY); }
     @Override protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
         graphics.fill(leftPos, topPos, leftPos + imageWidth, topPos + imageHeight, 0xFFC6C6C6);
         graphics.fill(leftPos + 4, topPos + 14, leftPos + 172, topPos + 126, 0xFF8B8B8B);

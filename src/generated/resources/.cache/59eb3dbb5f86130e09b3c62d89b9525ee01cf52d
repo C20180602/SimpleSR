@@ -1,11 +1,15 @@
-// 1.20.1	2026-07-31T16:06:06.6665798	Loot Tables
+// 1.20.1	2026-08-01T22:18:42.0396206	Loot Tables
 8f7e9b797b9571a9e2e7308af4f1170ecdec5b6b data/simple_sr/loot_tables/blocks/bamboo_farm.json
 2c3bb7c804999cb8d42ac75b7c0e4f8d96e0385d data/simple_sr/loot_tables/blocks/cobblestone_farm.json
 f753689e66578efb97e76a4d126889faf18cb07a data/simple_sr/loot_tables/blocks/enderman_tower.json
 d05bde41e18c90164401ae850b1cea7f25603cb9 data/simple_sr/loot_tables/blocks/furnace_array.json
+26a5e595d3582bcfa03f68891e08c3d396c9f276 data/simple_sr/loot_tables/blocks/guardian_farm.json
+1a7a7302a626db9bfd58629b907ff3724209b215 data/simple_sr/loot_tables/blocks/hoglin_farm.json
 0434660b44ec4b3a00f0b3ef42cf210babc7a4de data/simple_sr/loot_tables/blocks/honey_farm.json
 55fc247d7508d2cd8228c4bfb6b650054b221741 data/simple_sr/loot_tables/blocks/iron_farm.json
 294b0db5da80990e7449dd48cb821533eb8003e8 data/simple_sr/loot_tables/blocks/packer.json
+b3ddc02b08c8387b6239d6e848281e37627db410 data/simple_sr/loot_tables/blocks/piglin_trading_tower.json
+2b9b57749115ea03b7acd8b04232dbdc1c4b9db0 data/simple_sr/loot_tables/blocks/raid_tower.json
 6d095d971609be639b2dd82f9d01a6241915ba3c data/simple_sr/loot_tables/blocks/rail_farm.json
 14b87ce836ed9aab1185ec933706848f3ad33833 data/simple_sr/loot_tables/blocks/sand_farm.json
 3123453b612b65c61fa3725935919ac0f34e167d data/simple_sr/loot_tables/blocks/shulker_farm.json
@@ -16,3 +20,5 @@ d263eb6479cea21d871e4871984f7f5df5dbddf7 data/simple_sr/loot_tables/blocks/swamp
 b105a0160395c18c1b18dcb046ac26935d1795f3 data/simple_sr/loot_tables/blocks/tree_farm.json
 c1df2902a647509f4a90b8f3ff5fbac8226e9d60 data/simple_sr/loot_tables/blocks/villager_breeder.json
 030afb5c9e08b5d639e8d24ee0007eee96aad01b data/simple_sr/loot_tables/blocks/villager_trading_hall.json
+75dbd302cab3083ce3de3b343ad02e498e808773 data/simple_sr/loot_tables/blocks/wither_skeleton_farm.json
+83807397517bb4de9e36807e7f5972ee9dac2274 data/simple_sr/loot_tables/blocks/zombified_piglin_tower.json

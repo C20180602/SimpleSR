@@ -56,6 +56,54 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ).texture("particle", modLoc("block/enderman_tower_side")));
         simpleBlockItem(ModBlocks.ENDERMAN_TOWER.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/enderman_tower")));
 
+        horizontalBlock(ModBlocks.ZOMBIFIED_PIGLIN_TOWER.get(), models().cube(
+                "zombified_piglin_tower",
+                modLoc("block/zombified_piglin_tower_side"), modLoc("block/zombified_piglin_tower_side"),
+                modLoc("block/zombified_piglin_tower_front"), modLoc("block/zombified_piglin_tower_side"),
+                modLoc("block/zombified_piglin_tower_side"), modLoc("block/zombified_piglin_tower_side")
+        ).texture("particle", modLoc("block/zombified_piglin_tower_side")));
+        simpleBlockItem(ModBlocks.ZOMBIFIED_PIGLIN_TOWER.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/zombified_piglin_tower")));
+
+        horizontalBlock(ModBlocks.PIGLIN_TRADING_TOWER.get(), models().cube(
+                "piglin_trading_tower",
+                modLoc("block/piglin_trading_tower_side"), modLoc("block/piglin_trading_tower_side"),
+                modLoc("block/piglin_trading_tower_front"), modLoc("block/piglin_trading_tower_side"),
+                modLoc("block/piglin_trading_tower_side"), modLoc("block/piglin_trading_tower_side")
+        ).texture("particle", modLoc("block/piglin_trading_tower_side")));
+        simpleBlockItem(ModBlocks.PIGLIN_TRADING_TOWER.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/piglin_trading_tower")));
+
+        horizontalBlock(ModBlocks.HOGLIN_FARM.get(), models().cube(
+                "hoglin_farm",
+                modLoc("block/hoglin_farm_side"), modLoc("block/hoglin_farm_side"),
+                modLoc("block/hoglin_farm_front"), modLoc("block/hoglin_farm_side"),
+                modLoc("block/hoglin_farm_side"), modLoc("block/hoglin_farm_side")
+        ).texture("particle", modLoc("block/hoglin_farm_side")));
+        simpleBlockItem(ModBlocks.HOGLIN_FARM.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/hoglin_farm")));
+
+        horizontalBlock(ModBlocks.RAID_TOWER.get(), models().cube(
+                "raid_tower",
+                modLoc("block/zombified_piglin_tower_side"), modLoc("block/zombified_piglin_tower_side"),
+                modLoc("block/raid_tower_front"), modLoc("block/zombified_piglin_tower_side"),
+                modLoc("block/zombified_piglin_tower_side"), modLoc("block/zombified_piglin_tower_side")
+        ).texture("particle", modLoc("block/zombified_piglin_tower_side")));
+        simpleBlockItem(ModBlocks.RAID_TOWER.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/raid_tower")));
+
+        horizontalBlock(ModBlocks.GUARDIAN_FARM.get(), models().cube(
+                "guardian_farm",
+                modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side"),
+                modLoc("block/guardian_farm_front"), modLoc("block/rail_farm_side"),
+                modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side")
+        ).texture("particle", modLoc("block/rail_farm_side")));
+        simpleBlockItem(ModBlocks.GUARDIAN_FARM.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/guardian_farm")));
+
+        horizontalBlock(ModBlocks.WITHER_SKELETON_FARM.get(), models().cube(
+                "wither_skeleton_farm",
+                modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side"),
+                modLoc("block/wither_skeleton_farm_front"), modLoc("block/rail_farm_side"),
+                modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side")
+        ).texture("particle", modLoc("block/rail_farm_side")));
+        simpleBlockItem(ModBlocks.WITHER_SKELETON_FARM.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/wither_skeleton_farm")));
+
         horizontalBlock(ModBlocks.COBBLESTONE_FARM.get(), models().cube(
                 "cobblestone_farm",
                 modLoc("block/cobblestone_farm_side"), modLoc("block/cobblestone_farm_side"),
@@ -91,7 +139,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlock(ModBlocks.SAND_FARM.get(), models().cube(
                 "sand_farm",
                 modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side"),
-                new ResourceLocation("minecraft", "block/sand"), modLoc("block/rail_farm_side"),
+                modLoc("block/sand_farm_front"), modLoc("block/rail_farm_side"),
                 modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side")
         ).texture("particle", modLoc("block/rail_farm_side")));
         simpleBlockItem(ModBlocks.SAND_FARM.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/sand_farm")));
@@ -99,7 +147,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlock(ModBlocks.SOLIDIFIER.get(), models().cube(
                 "solidifier",
                 modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side"),
-                new ResourceLocation("minecraft", "block/sand"), modLoc("block/rail_farm_side"),
+                modLoc("block/solidifier_front"), modLoc("block/rail_farm_side"),
                 modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side")
         ).texture("particle", modLoc("block/rail_farm_side")));
         simpleBlockItem(ModBlocks.SOLIDIFIER.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/solidifier")));
@@ -107,7 +155,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlock(ModBlocks.SHULKER_FARM.get(), models().cube(
                 "shulker_farm",
                 modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side"),
-                new ResourceLocation("minecraft", "block/shulker_box"), modLoc("block/rail_farm_side"),
+                modLoc("block/shulker_farm_front"), modLoc("block/rail_farm_side"),
                 modLoc("block/rail_farm_side"), modLoc("block/rail_farm_side")
         ).texture("particle", modLoc("block/rail_farm_side")));
         simpleBlockItem(ModBlocks.SHULKER_FARM.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/shulker_farm")));
@@ -115,7 +163,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlock(ModBlocks.BAMBOO_FARM.get(), models().cube(
                 "bamboo_farm",
                 modLoc("block/cobblestone_farm_side"), modLoc("block/cobblestone_farm_side"),
-                new ResourceLocation("minecraft", "block/sugar_cane"), modLoc("block/cobblestone_farm_side"),
+                modLoc("block/bamboo_farm_front"), modLoc("block/cobblestone_farm_side"),
                 modLoc("block/cobblestone_farm_side"), modLoc("block/cobblestone_farm_side")
         ).texture("particle", modLoc("block/cobblestone_farm_side")));
         simpleBlockItem(ModBlocks.BAMBOO_FARM.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/bamboo_farm")));
@@ -123,7 +171,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         horizontalBlock(ModBlocks.PACKER.get(), models().cube(
                 "packer",
                 modLoc("block/cobblestone_farm_side"), modLoc("block/cobblestone_farm_side"),
-                new ResourceLocation("minecraft", "block/shulker_box"), modLoc("block/cobblestone_farm_side"),
+                modLoc("block/packer_front"), modLoc("block/cobblestone_farm_side"),
                 modLoc("block/cobblestone_farm_side"), modLoc("block/cobblestone_farm_side")
         ).texture("particle", modLoc("block/cobblestone_farm_side")));
         simpleBlockItem(ModBlocks.PACKER.get(), models().getExistingFile(new ResourceLocation(SimpleSR.MODID, "block/packer")));

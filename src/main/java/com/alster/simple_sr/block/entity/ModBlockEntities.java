@@ -32,6 +32,36 @@ public class ModBlockEntities {
                     () -> BlockEntityType.Builder.of(EndermanTowerBlockEntity::new,
                             ModBlocks.ENDERMAN_TOWER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<ZombifiedPiglinTowerBlockEntity>> ZOMBIFIED_PIGLIN_TOWER_BE =
+            BLOCK_ENTITIES.register("zombified_piglin_tower",
+                    () -> BlockEntityType.Builder.of(ZombifiedPiglinTowerBlockEntity::new,
+                            ModBlocks.ZOMBIFIED_PIGLIN_TOWER.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<PiglinTradingTowerBlockEntity>> PIGLIN_TRADING_TOWER_BE =
+            BLOCK_ENTITIES.register("piglin_trading_tower",
+                    () -> BlockEntityType.Builder.of(PiglinTradingTowerBlockEntity::new,
+                            ModBlocks.PIGLIN_TRADING_TOWER.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<HoglinFarmBlockEntity>> HOGLIN_FARM_BE =
+            BLOCK_ENTITIES.register("hoglin_farm",
+                    () -> BlockEntityType.Builder.of(HoglinFarmBlockEntity::new,
+                            ModBlocks.HOGLIN_FARM.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<RaidTowerBlockEntity>> RAID_TOWER_BE =
+            BLOCK_ENTITIES.register("raid_tower",
+                    () -> BlockEntityType.Builder.of(RaidTowerBlockEntity::new,
+                            ModBlocks.RAID_TOWER.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<GuardianFarmBlockEntity>> GUARDIAN_FARM_BE =
+            BLOCK_ENTITIES.register("guardian_farm",
+                    () -> BlockEntityType.Builder.of(GuardianFarmBlockEntity::new,
+                            ModBlocks.GUARDIAN_FARM.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<WitherSkeletonFarmBlockEntity>> WITHER_SKELETON_FARM_BE =
+            BLOCK_ENTITIES.register("wither_skeleton_farm",
+                    () -> BlockEntityType.Builder.of(WitherSkeletonFarmBlockEntity::new,
+                            ModBlocks.WITHER_SKELETON_FARM.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<CobblestoneFarmBlockEntity>> COBBLESTONE_FARM_BE =
             BLOCK_ENTITIES.register("cobblestone_farm",
                     () -> BlockEntityType.Builder.of(CobblestoneFarmBlockEntity::new,

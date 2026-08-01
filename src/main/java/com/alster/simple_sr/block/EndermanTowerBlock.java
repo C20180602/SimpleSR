@@ -52,7 +52,7 @@ public class EndermanTowerBlock extends BaseEntityBlock {
         }
         if (!level.isClientSide && player instanceof ServerPlayer serverPlayer
                 && level.getBlockEntity(pos) instanceof MenuProvider provider) {
-            NetworkHooks.openScreen(serverPlayer, provider, pos);
+                NetworkHooks.openScreen(serverPlayer, provider, buffer -> { buffer.writeBlockPos(pos); buffer.writeUtf(((EndermanTowerBlockEntity) level.getBlockEntity(pos)).getSwordOwnerName()); });
         }
         return InteractionResult.sidedSuccess(level.isClientSide);
     }

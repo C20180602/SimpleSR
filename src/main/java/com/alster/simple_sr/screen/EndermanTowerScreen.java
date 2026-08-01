@@ -6,19 +6,28 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class EndermanTowerScreen extends AbstractContainerScreen<EndermanTowerMenu> {
+public class EndermanTowerScreen extends TooltipContainerScreen<EndermanTowerMenu> {
     public EndermanTowerScreen(EndermanTowerMenu menu, Inventory inventory, Component title) { super(menu, inventory, title); imageWidth = 256; imageHeight = 222; inventoryLabelY = 128; }
+    @Override public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) { super.render(graphics, mouseX, mouseY, partialTick); renderTooltip(graphics, mouseX, mouseY); }
     @Override protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
         graphics.fill(leftPos, topPos, leftPos + imageWidth, topPos + imageHeight, 0xFFC6C6C6);
         drawPanel(graphics, leftPos + 4, topPos + 14, 166, 112);
-        drawSlots(graphics, 8, 18, 9, 6); drawSlots(graphics, 8, 140, 9, 3); drawSlots(graphics, 8, 198, 9, 1);
+        drawSlots(graphics, 8, 18, 9, 6); drawSlot(graphics, 224, 18); drawExperienceControls(graphics); drawSlots(graphics, 8, 140, 9, 3); drawSlots(graphics, 8, 198, 9, 1);
     }
     @Override protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
         graphics.drawString(font, Component.translatable("hint.simple_sr.enderman_tower.attack"), 8, 6, 0x55FF55, true);
         Component status = menu.isInEndDimension() ? Component.translatable("status.simple_sr.enderman_tower.running") : Component.translatable("status.simple_sr.enderman_tower.not_running");
         graphics.drawString(font, status, imageWidth - font.width(status) - 5, 6, menu.isInEndDimension() ? 0x55FF55 : 0xFF5555, true);
         graphics.drawString(font, playerInventoryTitle, 8, inventoryLabelY, 0x404040, false);
+        graphics.drawString(font, Component.translatable("button.simple_sr.extract_experience"), 226, 46, 0x404040, false);
+        graphics.drawString(font, Component.literal("Lv." + MachineExperienceDisplay.level(menu.getStoredExperience())), 190, 94, 0x5555FF, false);
+        String owner = menu.getSwordOwnerName(); if (!owner.isEmpty()) graphics.drawString(font, owner, imageWidth - font.width(owner) - 5, 64, 0x5555FF, false);
     }
+    @Override public boolean mouseClicked(double mouseX, double mouseY, int button) { if (button == 0 && isExperienceButton(mouseX, mouseY)) { minecraft.gameMode.handleInventoryButtonClick(menu.containerId, 0); return true; } return super.mouseClicked(mouseX, mouseY, button); }
+    @Override public boolean mouseReleased(double mouseX, double mouseY, int button) { if (button == 0) minecraft.gameMode.handleInventoryButtonClick(menu.containerId, 1); return super.mouseReleased(mouseX, mouseY, button); }
+    private boolean isExperienceButton(double x, double y) { return x >= leftPos + 224 && x < leftPos + 248 && y >= topPos + 42 && y < topPos + 58; }
     private void drawPanel(GuiGraphics graphics, int x, int y, int width, int height) { graphics.fill(x, y, x + width, y + height, 0xFF8B8B8B); graphics.fill(x, y, x + width - 1, y + 1, 0xFFFFFFFF); graphics.fill(x, y, x + 1, y + height - 1, 0xFFFFFFFF); graphics.fill(x + width - 1, y, x + width, y + height, 0xFF373737); graphics.fill(x, y + height - 1, x + width, y + height, 0xFF373737); }
     private void drawSlots(GuiGraphics graphics, int x, int y, int columns, int rows) { for (int row = 0; row < rows; row++) for (int column = 0; column < columns; column++) { int sx = leftPos + x + column * 18, sy = topPos + y + row * 18; graphics.fill(sx - 1, sy - 1, sx + 17, sy + 17, 0xFF373737); graphics.fill(sx, sy, sx + 16, sy + 16, 0xFF8B8B8B); graphics.fill(sx + 16, sy, sx + 17, sy + 17, 0xFFFFFFFF); graphics.fill(sx, sy + 16, sx + 17, sy + 17, 0xFFFFFFFF); } }
+    private void drawSlot(GuiGraphics graphics, int x, int y) { int sx = leftPos + x, sy = topPos + y; graphics.fill(sx - 1, sy - 1, sx + 17, sy + 17, 0xFF373737); graphics.fill(sx, sy, sx + 16, sy + 16, 0xFF8B8B8B); graphics.fill(sx + 16, sy, sx + 17, sy + 17, 0xFFFFFFFF); graphics.fill(sx, sy + 16, sx + 17, sy + 17, 0xFFFFFFFF); }
+    private void drawExperienceControls(GuiGraphics graphics) { graphics.fill(leftPos + 224, topPos + 42, leftPos + 248, topPos + 58, 0xFF373737); graphics.fill(leftPos + 225, topPos + 43, leftPos + 247, topPos + 57, 0xFF8B8B8B); graphics.fill(leftPos + 190, topPos + 82, leftPos + 250, topPos + 90, 0xFF373737); int width = Math.round(MachineExperienceDisplay.progress(menu.getStoredExperience()) * 58); graphics.fill(leftPos + 191, topPos + 83, leftPos + 191 + width, topPos + 89, 0xFF55AAFF); }
 }

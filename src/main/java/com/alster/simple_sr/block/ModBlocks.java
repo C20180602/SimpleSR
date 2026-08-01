@@ -34,6 +34,30 @@ public class ModBlocks {
             = registerBlock("enderman_tower",
             () -> new EndermanTowerBlock(machineProperties()));
 
+    public static final RegistryObject<Block> ZOMBIFIED_PIGLIN_TOWER
+            = registerBlock("zombified_piglin_tower",
+            () -> new ZombifiedPiglinTowerBlock(machineProperties()));
+
+    public static final RegistryObject<Block> PIGLIN_TRADING_TOWER
+            = registerBlock("piglin_trading_tower",
+            () -> new PiglinTradingTowerBlock(machineProperties()));
+
+    public static final RegistryObject<Block> HOGLIN_FARM
+            = registerBlock("hoglin_farm",
+            () -> new HoglinFarmBlock(machineProperties()));
+
+    public static final RegistryObject<Block> RAID_TOWER
+            = registerBlock("raid_tower",
+            () -> new RaidTowerBlock(machineProperties()));
+
+    public static final RegistryObject<Block> GUARDIAN_FARM
+            = registerBlock("guardian_farm",
+            () -> new GuardianFarmBlock(machineProperties()));
+
+    public static final RegistryObject<Block> WITHER_SKELETON_FARM
+            = registerBlock("wither_skeleton_farm",
+            () -> new WitherSkeletonFarmBlock(machineProperties()));
+
     public static final RegistryObject<Block> COBBLESTONE_FARM
             = registerBlock("cobblestone_farm",
             () -> new CobblestoneFarmBlock(machineProperties()));

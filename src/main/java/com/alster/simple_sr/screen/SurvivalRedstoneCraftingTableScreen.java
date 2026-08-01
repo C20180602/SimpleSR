@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-public class SurvivalRedstoneCraftingTableScreen extends AbstractContainerScreen<SurvivalRedstoneCraftingTableMenu> {
+public class SurvivalRedstoneCraftingTableScreen extends TooltipContainerScreen<SurvivalRedstoneCraftingTableMenu> {
     private static final int BACKGROUND = 0xFFC6C6C6;
     private static final int PANEL_DARK = 0xFF8B8B8B;
     private static final int PANEL_LIGHT = 0xFFFFFFFF;

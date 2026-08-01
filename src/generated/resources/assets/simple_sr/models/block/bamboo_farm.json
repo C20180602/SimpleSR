@@ -3,7 +3,7 @@
   "textures": {
     "down": "simple_sr:block/cobblestone_farm_side",
     "east": "simple_sr:block/cobblestone_farm_side",
-    "north": "minecraft:block/sugar_cane",
+    "north": "simple_sr:block/bamboo_farm_front",
     "particle": "simple_sr:block/cobblestone_farm_side",
     "south": "simple_sr:block/cobblestone_farm_side",
     "up": "simple_sr:block/cobblestone_farm_side",

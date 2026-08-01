@@ -7,7 +7,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class SandFarmScreen extends AbstractContainerScreen<SandFarmMenu> {
+public class SandFarmScreen extends TooltipContainerScreen<SandFarmMenu> {
     private static final int SLOT_STEP = 17;
     private Button toggleButton;
 
@@ -32,6 +32,7 @@ public class SandFarmScreen extends AbstractContainerScreen<SandFarmMenu> {
             toggleButton.active = menu.hasInput();
         }
         super.render(graphics, mouseX, mouseY, partialTick);
+        renderTooltip(graphics, mouseX, mouseY);
     }
 
     @Override protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {

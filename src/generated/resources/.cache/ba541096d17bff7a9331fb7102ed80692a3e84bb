@@ -1,4 +1,4 @@
-// 1.20.1	2026-07-31T16:06:06.6725171	Tags for minecraft:block mod id simple_sr
+// 1.20.1	2026-08-01T22:18:42.0466325	Tags for minecraft:block mod id simple_sr
 ef13a645906588334747c0817838f13f1ef23c6a data/minecraft/tags/blocks/mineable/pickaxe.json
 ef13a645906588334747c0817838f13f1ef23c6a data/minecraft/tags/blocks/needs_stone_tool.json
-01aa13226d22b9c1d116ea9639b6d5ec2f8ebdfb data/simple_sr/tags/blocks/machines.json
+785c890b61d2fc62f2faf252a8168ee30a4fe723 data/simple_sr/tags/blocks/machines.json

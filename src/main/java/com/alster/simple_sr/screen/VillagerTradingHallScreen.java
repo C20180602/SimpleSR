@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-public class VillagerTradingHallScreen extends AbstractContainerScreen<VillagerTradingHallMenu> {
+public class VillagerTradingHallScreen extends TooltipContainerScreen<VillagerTradingHallMenu> {
     private EditBox renameBox;
     private long lastClick;
     private int villagerScroll;
@@ -56,6 +56,7 @@ public class VillagerTradingHallScreen extends AbstractContainerScreen<VillagerT
         renderVillagerListOnTop(g, mouseX, mouseY, partialTick);
         renderOfferTooltip(g, mouseX, mouseY);
         renderDialog(g, mouseX, mouseY, partialTick);
+        renderTooltip(g, mouseX, mouseY);
     }
     @Override protected void renderBg(GuiGraphics g, float partial, int mx, int my) {
         g.fill(leftPos, topPos, leftPos + imageWidth, topPos + imageHeight, 0xffc6c6c6);

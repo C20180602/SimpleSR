@@ -6,7 +6,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 
-public class FurnaceArrayScreen extends AbstractContainerScreen<FurnaceArrayMenu> {
+public class FurnaceArrayScreen extends TooltipContainerScreen<FurnaceArrayMenu> {
     public FurnaceArrayScreen(FurnaceArrayMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
         imageWidth = 370;
@@ -16,6 +16,7 @@ public class FurnaceArrayScreen extends AbstractContainerScreen<FurnaceArrayMenu
         titleLabelX = 8;
         titleLabelY = 6;
     }
+    @Override public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) { super.render(graphics, mouseX, mouseY, partialTick); renderTooltip(graphics, mouseX, mouseY); }
     @Override protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
         graphics.fill(leftPos, topPos, leftPos + imageWidth, topPos + imageHeight, 0xFFC6C6C6);
         drawPanel(graphics, leftPos + 4, topPos + 14, 166, 112);
